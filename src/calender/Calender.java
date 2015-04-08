@@ -16,7 +16,12 @@ public class Calender {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.println("Hello World!");
+        Calender calender = new Calender();
+        calender.print("hej");
+    }
+    
+    public void print(String toPrint) {
+        System.out.println(toPrint);
     }
     
 }
