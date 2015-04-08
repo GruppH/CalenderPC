@@ -18,7 +18,7 @@ public class Calender {
         // TODO code application logic here
         Calender calender = new Calender();
         calender.print("hej");
-        calender.count(10);
+        calender.count(10000000);
     }
     
     public void print(String toPrint) {
