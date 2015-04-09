@@ -19,6 +19,7 @@ public class Calender {
         Calender calender = new Calender();
         calender.print("hej");
         System.out.println("asddasdsad");
+        //Nej
         calender.count(10000000);
     }
     
