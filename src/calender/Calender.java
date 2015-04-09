@@ -19,7 +19,7 @@ public class Calender {
         Calender calender = new Calender();
         calender.print("hej");
         System.out.println("asddasdsad");
-        //7
+        //765
         calender.count(10000000);
     }
     
