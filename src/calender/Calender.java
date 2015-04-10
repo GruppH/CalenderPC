@@ -17,11 +17,9 @@ public class Calender {
     public static void main(String[] args) {
         // TODO code application logic here
         Calender calender = new Calender();
-        calender.print("Heloooo");
+        calender.print("asdasds");
         System.out.println("asddasdsad");
-        //765
         calender.count(10000000);
-        //ccfaag
     }
     
     public void print(String toPrint) {
