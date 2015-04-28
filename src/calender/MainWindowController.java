@@ -17,6 +17,7 @@ public class MainWindowController implements Initializable {
     private String hoverColor = "#6495ED";
     private Calendar calendar;
     private Pane[] panes = new Pane[37];
+    private Label[] labels = new Label[37];
     private int year;
     private int month;
     private int day;
@@ -67,43 +68,86 @@ public class MainWindowController implements Initializable {
     
 //<editor-fold defaultstate="collapsed" desc="Method for filling pane array">
     public void fillPaneArray(){
-        panes[0] = pane1;
-        panes[1] = pane2;
-        panes[2] = pane3;
-        panes[3] = pane4;
-        panes[4] = pane5;
-        panes[5] = pane6;
-        panes[6] = pane7;
-        panes[7] = pane8;
-        panes[8] = pane9;
-        panes[9] = pane10;
-        panes[10] = pane11;
-        panes[11] = pane12;
-        panes[12] = pane13;
-        panes[13] = pane14;
-        panes[14] = pane15;
-        panes[15] = pane16;
-        panes[16] = pane17;
-        panes[17] = pane18;
-        panes[18] = pane19;
-        panes[19] = pane20;
-        panes[20] = pane21;
-        panes[21] = pane22;
-        panes[22] = pane23;
-        panes[23] = pane24;
-        panes[24] = pane25;
-        panes[25] = pane26;
-        panes[26] = pane27;
-        panes[27] = pane28;
-        panes[28] = pane29;
-        panes[29] = pane30;
-        panes[30] = pane31;
-        panes[31] = pane32;
-        panes[32] = pane33;
-        panes[33] = pane34;
-        panes[34] = pane35;
-        panes[35] = pane36;
-        panes[36] = pane37;               
+        panes[1] = pane1;
+        panes[2] = pane2;
+        panes[3] = pane3;
+        panes[4] = pane4;
+        panes[5] = pane5;
+        panes[6] = pane6;
+        panes[7] = pane7;
+        panes[8] = pane8;
+        panes[9] = pane9;
+        panes[10] = pane10;
+        panes[11] = pane11;
+        panes[12] = pane12;
+        panes[13] = pane13;
+        panes[14] = pane14;
+        panes[15] = pane15;
+        panes[16] = pane16;
+        panes[17] = pane17;
+        panes[18] = pane18;
+        panes[19] = pane19;
+        panes[20] = pane20;
+        panes[21] = pane21;
+        panes[22] = pane22;
+        panes[23] = pane23;
+        panes[24] = pane24;
+        panes[25] = pane25;
+        panes[26] = pane26;
+        panes[27] = pane27;
+        panes[28] = pane28;
+        panes[29] = pane29;
+        panes[30] = pane30;
+        panes[31] = pane31;
+        panes[32] = pane32;
+        panes[33] = pane33;
+        panes[34] = pane34;
+        panes[35] = pane35;
+        panes[36] = pane36;
+        panes[37] = pane37;               
+    }
+    //</editor-fold>
+    
+//<editor-fold defaultstate="collapsed" desc="Method for filling label array">
+    public void fillLabelArray(){
+        labels[1] = label1;
+        labels[2] = label2;   
+        labels[3] = label3;   
+        labels[4] = label4;   
+        labels[5] = label5;   
+        labels[6] = label6;   
+        labels[7] = label7;   
+        labels[8] = label8;   
+        labels[9] = label9;   
+        labels[10] = label10;   
+        labels[11] = label11;   
+        labels[12] = label12;   
+        labels[13] = label13;   
+        labels[14] = label14;   
+        labels[15] = label15;   
+        labels[16] = label16;   
+        labels[17] = label17;   
+        labels[18] = label18;   
+        labels[19] = label19;   
+        labels[20] = label20;   
+        labels[21] = label21;   
+        labels[22] = label22;   
+        labels[23] = label23;   
+        labels[24] = label24;   
+        labels[25] = label25;   
+        labels[26] = label26;   
+        labels[27] = label27;   
+        labels[28] = label28;   
+        labels[29] = label29;   
+        labels[30] = label30;   
+        labels[31] = label31;   
+        labels[32] = label32;   
+        labels[33] = label33;   
+        labels[34] = label34;   
+        labels[35] = label35;   
+        labels[36] = label36;   
+        labels[37] = label37;   
+        
     }
     //</editor-fold>
     
