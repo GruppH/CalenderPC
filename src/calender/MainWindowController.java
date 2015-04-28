@@ -3,6 +3,7 @@ package calender;
 import java.awt.event.*;
 import java.net.URL;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,14 +15,21 @@ public class MainWindowController implements Initializable {
 
     private String hoverColor = "#6495ED";
     private Pane[] panes = new Pane[37];
-    
-    
-    
+    private int year;
+    private int month;
+    private int day;
+    private int weekday;
     
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
             fillPaneArray();
+            GregorianCalendar cal = new GregorianCalendar();
+            year = cal.get(GregorianCalendar.YEAR);
+            month = cal.get(GregorianCalendar.MONTH)+1;
+            day = cal.get(GregorianCalendar.DAY_OF_MONTH);
+            weekday = cal.get(GregorianCalendar.DAY_OF_WEEK);
+            System.out.println(" The year is:  "+ year +"  The month is: "+month+"  Day is: "+day+"  Weekday is: "+weekday);
     }
     
     
@@ -64,9 +72,9 @@ public class MainWindowController implements Initializable {
         panes[33] = pane34;
         panes[34] = pane35;
         panes[35] = pane36;
-        panes[36] = pane37;
-        //</editor-fold>        
+        panes[36] = pane37;               
     }
+    //</editor-fold>
     
 // <editor-fold defaultstate="collapsed" desc="Methods for mouseHovering">
     @FXML
