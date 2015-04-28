@@ -27,7 +27,7 @@ public class MainWindowController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
             fillPaneArray();
             calendar = Calendar.getInstance();
-            
+            System.out.println(getFirstWeekdayInMonth(1, 1986));
     }
     
     public void updateLabels(int month,int year){
@@ -36,7 +36,7 @@ public class MainWindowController implements Initializable {
     
     public int getFirstWeekdayInMonth(int month, int year){
         Calendar cal = Calendar.getInstance();
-        cal.set(year, month, 1);
+        cal.set(year, month-1, 1);
         int result = cal.get(Calendar.DAY_OF_WEEK)-1;
         if (result == 0){
             result = 7;
