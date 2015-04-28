@@ -12,7 +12,7 @@ import javafx.scene.layout.Pane;
 public class MainWindowController implements Initializable {
 
     private String hoverColor = "#6495ED";
-    
+    private Pane[] panes = new Pane[37];
     
     
     
@@ -20,8 +20,16 @@ public class MainWindowController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+            
     }
+    
+    
+    public void fillPaneArray(){
+        
+    }
+    
+    
+    
     
     
 // <editor-fold defaultstate="collapsed" desc="Methods for mouseHovering">
