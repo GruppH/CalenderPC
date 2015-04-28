@@ -9,7 +9,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 
-public class FXMLDocumentController implements Initializable {
+public class MainWindowController implements Initializable {
 
     private String hoverColor = "#6495ED";
     
