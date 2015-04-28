@@ -15,7 +15,7 @@ import javafx.scene.layout.Pane;
 public class MainWindowController implements Initializable {
 
     private String hoverColor = "#6495ED";
-    private Calendar cal;
+    private Calendar calendar;
     private Pane[] panes = new Pane[37];
     private int year;
     private int month;
@@ -26,7 +26,7 @@ public class MainWindowController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
             fillPaneArray();
-            cal = Calendar.getInstance();
+            calendar = Calendar.getInstance();
             
     }
     
@@ -34,20 +34,26 @@ public class MainWindowController implements Initializable {
         
     }
     
-    public void getFirstWeekDayInMonth(int month, int year){
-        
+    public int getFirstWeekdayInMonth(int month, int year){
+        Calendar cal = Calendar.getInstance();
+        cal.set(year, month, 1);
+        int result = cal.get(Calendar.DAY_OF_WEEK)-1;
+        if (result == 0){
+            result = 7;
+        }
+        return result;
     }
     
     public int getDaysInMonth(int month, int year){
-        Calendar localCal = Calendar.getInstance();
-        localCal.set(year, month, 1);
+        Calendar cal = Calendar.getInstance();
+        cal.set(year, month, 1);
         switch (month){
             case 1: case 3: case 5: case 7: case 8: case 10: case 12:
                 return 31;
             case 4: case 6: case 9: case 11:
                 return 30;
             case 2:
-                if (localCal.getActualMaximum(Calendar.DAY_OF_YEAR) > 365){
+                if (cal.getActualMaximum(Calendar.DAY_OF_YEAR) > 365){
                     return 29;
                 } else {
                     return 28;
