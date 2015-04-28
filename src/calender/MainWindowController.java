@@ -2,6 +2,7 @@ package calender;
 
 import java.awt.event.*;
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -25,7 +26,7 @@ public class MainWindowController implements Initializable {
     
     
     
-//<editor-fold defaultstate="collapsed" desc="Methods for mouseHovering">
+//<editor-fold defaultstate="collapsed" desc="Method for filling pane array">
     public void fillPaneArray(){
         panes[0] = pane1;
         panes[1] = pane2;
