@@ -20,17 +20,52 @@ public class MainWindowController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-            
+            fillPaneArray();
     }
     
     
+    
+//<editor-fold defaultstate="collapsed" desc="Methods for mouseHovering">
     public void fillPaneArray(){
-        
+        panes[0] = pane1;
+        panes[1] = pane2;
+        panes[2] = pane3;
+        panes[3] = pane4;
+        panes[4] = pane5;
+        panes[5] = pane6;
+        panes[6] = pane7;
+        panes[7] = pane8;
+        panes[8] = pane9;
+        panes[9] = pane10;
+        panes[10] = pane11;
+        panes[11] = pane12;
+        panes[12] = pane13;
+        panes[13] = pane14;
+        panes[14] = pane15;
+        panes[15] = pane16;
+        panes[16] = pane17;
+        panes[17] = pane18;
+        panes[18] = pane19;
+        panes[19] = pane20;
+        panes[20] = pane21;
+        panes[21] = pane22;
+        panes[22] = pane23;
+        panes[23] = pane24;
+        panes[24] = pane25;
+        panes[25] = pane26;
+        panes[26] = pane27;
+        panes[27] = pane28;
+        panes[28] = pane29;
+        panes[29] = pane30;
+        panes[30] = pane31;
+        panes[31] = pane32;
+        panes[32] = pane33;
+        panes[33] = pane34;
+        panes[34] = pane35;
+        panes[35] = pane36;
+        panes[36] = pane37;
+        //</editor-fold>        
     }
-    
-    
-    
-    
     
 // <editor-fold defaultstate="collapsed" desc="Methods for mouseHovering">
     @FXML
