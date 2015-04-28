@@ -110,17 +110,17 @@
          <children>
             <Pane fx:id="pane1" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;">
                <children>
-                  <Label fx:id="l1" layoutX="14.0" layoutY="14.0" text="Label" />
+                  <Label fx:id="label1" layoutX="14.0" layoutY="14.0" text="Label" />
                </children>
             </Pane>
             <Pane fx:id="pane2" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
-                  <Label layoutX="14.0" layoutY="14.0" text="Label" />
+                  <Label fx:id="label2" layoutX="14.0" layoutY="14.0" text="Label" />
                </children>
             </Pane>
             <Pane fx:id="pane3" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
                <children>
-                  <Label layoutX="14.0" layoutY="14.0" text="Label" />
+                  <Label fx:id="label3" layoutX="14.0" layoutY="14.0" text="Label" />
                </children>
             </Pane>
             <Pane fx:id="pane4" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">

@@ -320,7 +320,7 @@ public class MainWindowController implements Initializable {
     
     //</editor-fold>
     
-// <editor-fold defaultstate="collapsed" desc="All the panes">
+// <editor-fold defaultstate="collapsed" desc="All the panes and Labels">
     @FXML
     private Pane pane1;
     @FXML
@@ -395,6 +395,80 @@ public class MainWindowController implements Initializable {
     private Pane pane36;
     @FXML
     private Pane pane37;
+    @FXML
+    private Label label1;
+    @FXML
+    private Label label2;
+    @FXML
+    private Label label3;
+    @FXML
+    private Label label4;
+    @FXML
+    private Label label5;
+    @FXML
+    private Label label6;
+    @FXML
+    private Label label7;
+    @FXML
+    private Label label8;
+    @FXML
+    private Label label9;
+    @FXML
+    private Label label10;
+    @FXML
+    private Label label11;
+    @FXML
+    private Label label12;
+    @FXML
+    private Label label13;
+    @FXML
+    private Label label14;
+    @FXML
+    private Label label15;
+    @FXML
+    private Label label16;
+    @FXML
+    private Label label17;
+    @FXML
+    private Label label18;
+    @FXML
+    private Label label19;
+    @FXML
+    private Label label20;
+    @FXML
+    private Label label21;
+    @FXML
+    private Label label22;
+    @FXML
+    private Label label23;
+    @FXML
+    private Label label24;
+    @FXML
+    private Label label25;
+    @FXML
+    private Label label26;
+    @FXML
+    private Label label27;
+    @FXML
+    private Label label28;
+    @FXML
+    private Label label29;
+    @FXML
+    private Label label30;
+    @FXML
+    private Label label31;
+    @FXML
+    private Label label32;
+    @FXML
+    private Label label33;
+    @FXML
+    private Label label34;
+    @FXML
+    private Label label35;
+    @FXML
+    private Label label36;
+    @FXML
+    private Label label37;
 // </editor-fold>
     
     
