@@ -16,8 +16,8 @@ public class MainWindowController implements Initializable {
 
     private String hoverColor = "#6495ED";
     private Calendar calendar;
-    private Pane[] panes = new Pane[37];
-    private Label[] labels = new Label[37];
+    private Pane[] panes = new Pane[38];
+    private Label[] labels = new Label[38];
     private int year;
     private int month;
     private int day;
@@ -27,12 +27,47 @@ public class MainWindowController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
             fillPaneArray();
-            calendar = Calendar.getInstance();
-            System.out.println(getFirstWeekdayInMonth(1, 1986));
+            fillLabelArray();
+            calendar = Calendar.getInstance();            
+            updateLabels(4, 2015);
     }
     
+    
+    @FXML
+    public void mouseHover(MouseEvent event) {
+        Pane p = (Pane) event.getSource();
+        p.setStyle("-fx-background-color: " + hoverColor);
+    }
+
+    @FXML
+    public void mouseLeave(MouseEvent event) {
+        Pane p = (Pane) event.getSource();
+        p.setStyle("-fx-background-color: " + "white");
+    }
+    
+    
+    
     public void updateLabels(int month,int year){
-        
+        int firstDay = getFirstWeekdayInMonth(month, year);
+        int numberOfDays = getDaysInMonth(month, year);
+        System.out.println(numberOfDays);
+        int days = 1;
+        for (int i = 1; i < labels.length; i++) {
+            if (i < firstDay){
+                labels[i].setText("");
+                panes[i].setDisable(true);
+                panes[i].setStyle("-fx-background-color: grey");
+            }
+            else if (days > numberOfDays){
+                labels[i].setText("");
+                panes[i].setDisable(true);
+                panes[i].setStyle("-fx-background-color: grey");
+            }
+            else {
+                labels[i].setText(String.valueOf(days));
+                days++;
+            }
+        }
     }
     
     public int getFirstWeekdayInMonth(int month, int year){
@@ -63,6 +98,8 @@ public class MainWindowController implements Initializable {
                 return 0;
         }
     }
+    
+    
     
     
     
@@ -149,250 +186,6 @@ public class MainWindowController implements Initializable {
         labels[37] = label37;   
         
     }
-    //</editor-fold>
-    
-// <editor-fold defaultstate="collapsed" desc="Methods for mouseHovering">
-    @FXML
-    public void mouseHover(MouseEvent event) {
-        String paneFullId = event.getSource().toString();
-        String pane = paneFullId.substring(8, paneFullId.length() - 1);
-        System.out.println(pane);
-        switch (pane) {
-            case "pane1":
-                pane1.setStyle("-fx-background-color: " + hoverColor);
-                break;
-            case "pane2":
-                pane2.setStyle("-fx-background-color: " + hoverColor);
-                break;
-            case "pane3":
-                pane3.setStyle("-fx-background-color: " + hoverColor);
-                break;
-            case "pane4":
-                pane4.setStyle("-fx-background-color: " + hoverColor);
-                break;
-            case "pane5":
-                pane5.setStyle("-fx-background-color: " + hoverColor);
-                break;
-            case "pane6":
-                pane6.setStyle("-fx-background-color: " + hoverColor);
-                break;
-            case "pane7":
-                pane7.setStyle("-fx-background-color: " + hoverColor);
-                break;
-            case "pane8":
-                pane8.setStyle("-fx-background-color: " + hoverColor);
-                break;
-            case "pane9":
-                pane9.setStyle("-fx-background-color: " + hoverColor);
-                break;
-            case "pane10":
-                pane10.setStyle("-fx-background-color: " + hoverColor);
-                break;
-            case "pane11":
-                pane11.setStyle("-fx-background-color: " + hoverColor);
-                break;
-            case "pane12":
-                pane12.setStyle("-fx-background-color: " + hoverColor);
-                break;
-            case "pane13":
-                pane13.setStyle("-fx-background-color: " + hoverColor);
-                break;
-            case "pane14":
-                pane14.setStyle("-fx-background-color: " + hoverColor);
-                break;
-            case "pane15":
-                pane15.setStyle("-fx-background-color: " + hoverColor);
-                break;
-            case "pane16":
-                pane16.setStyle("-fx-background-color: " + hoverColor);
-                break;
-            case "pane17":
-                pane17.setStyle("-fx-background-color: " + hoverColor);
-                break;
-            case "pane18":
-                pane18.setStyle("-fx-background-color: " + hoverColor);
-                break;
-            case "pane19":
-                pane19.setStyle("-fx-background-color: " + hoverColor);
-                break;
-            case "pane20":
-                pane20.setStyle("-fx-background-color: " + hoverColor);
-                break;
-            case "pane21":
-                pane21.setStyle("-fx-background-color: " + hoverColor);
-                break;
-            case "pane22":
-                pane22.setStyle("-fx-background-color: " + hoverColor);
-                break;
-            case "pane23":
-                pane23.setStyle("-fx-background-color: " + hoverColor);
-                break;
-            case "pane24":
-                pane24.setStyle("-fx-background-color: " + hoverColor);
-                break;
-            case "pane25":
-                pane25.setStyle("-fx-background-color: " + hoverColor);
-                break;
-            case "pane26":
-                pane26.setStyle("-fx-background-color: " + hoverColor);
-                break;
-            case "pane27":
-                pane27.setStyle("-fx-background-color: " + hoverColor);
-                break;
-            case "pane28":
-                pane28.setStyle("-fx-background-color: " + hoverColor);
-                break;
-            case "pane29":
-                pane29.setStyle("-fx-background-color: " + hoverColor);
-                break;
-            case "pane30":
-                pane30.setStyle("-fx-background-color: " + hoverColor);
-                break;
-            case "pane31":
-                pane31.setStyle("-fx-background-color: " + hoverColor);
-                break;
-            case "pane32":
-                pane32.setStyle("-fx-background-color: " + hoverColor);
-                break;
-            case "pane33":
-                pane33.setStyle("-fx-background-color: " + hoverColor);
-                break;
-            case "pane34":
-                pane34.setStyle("-fx-background-color: " + hoverColor);
-                break;
-            case "pane35":
-                pane35.setStyle("-fx-background-color: " + hoverColor);
-                break;
-            case "pane36":
-                pane36.setStyle("-fx-background-color: " + hoverColor);
-                break;
-            case "pane37":
-                pane37.setStyle("-fx-background-color: " + hoverColor);
-                break;
-
-        }
-    }
-
-    @FXML
-    public void mouseLeave(MouseEvent event) {
-        String paneFullId = event.getSource().toString();
-        String pane = paneFullId.substring(8,paneFullId.length()-1);
-
-        switch (pane) {
-            case "pane1":
-                pane1.setStyle("-fx-background-color: " + "White");
-                break;
-            case "pane2":
-                pane2.setStyle("-fx-background-color: " + "White");
-                break;
-            case "pane3":
-                pane3.setStyle("-fx-background-color: " + "White");
-                break;
-            case "pane4":
-                pane4.setStyle("-fx-background-color: " + "White");
-                break;
-            case "pane5":
-                pane5.setStyle("-fx-background-color: " + "White");
-                break;
-            case "pane6":
-                pane6.setStyle("-fx-background-color: " + "White");
-                break;
-            case "pane7":
-                pane7.setStyle("-fx-background-color: " + "White");
-                break;
-            case "pane8":
-                pane8.setStyle("-fx-background-color: " + "White");
-                break;
-            case "pane9":
-                pane9.setStyle("-fx-background-color: " + "White");
-                break;
-            case "pane10":
-                pane10.setStyle("-fx-background-color: " + "White");
-                break;
-            case "pane11":
-                pane11.setStyle("-fx-background-color: " + "White");
-                break;
-            case "pane12":
-                pane12.setStyle("-fx-background-color: " + "White");
-                break;
-            case "pane13":
-                pane13.setStyle("-fx-background-color: " + "White");
-                break;
-            case "pane14":
-                pane14.setStyle("-fx-background-color: " + "White");
-                break;
-            case "pane15":
-                pane15.setStyle("-fx-background-color: " + "White");
-                break;
-            case "pane16":
-                pane16.setStyle("-fx-background-color: " + "White");
-                break;
-            case "pane17":
-                pane17.setStyle("-fx-background-color: " + "White");
-                break;
-            case "pane18":
-                pane18.setStyle("-fx-background-color: " + "White");
-                break;
-            case "pane19":
-                pane19.setStyle("-fx-background-color: " + "White");
-                break;
-            case "pane20":
-                pane20.setStyle("-fx-background-color: " + "White");
-                break;
-            case "pane21":
-                pane21.setStyle("-fx-background-color: " + "White");
-                break;
-            case "pane22":
-                pane22.setStyle("-fx-background-color: " + "White");
-                break;
-            case "pane23":
-                pane23.setStyle("-fx-background-color: " + "White");
-                break;
-            case "pane24":
-                pane24.setStyle("-fx-background-color: " + "White");
-                break;
-            case "pane25":
-                pane25.setStyle("-fx-background-color: " + "White");
-                break;
-            case "pane26":
-                pane26.setStyle("-fx-background-color: " + "White");
-                break;
-            case "pane27":
-                pane27.setStyle("-fx-background-color: " + "White");
-                break;
-            case "pane28":
-                pane28.setStyle("-fx-background-color: " + "White");
-                break;
-            case "pane29":
-                pane29.setStyle("-fx-background-color: " + "White");
-                break;
-            case "pane30":
-                pane30.setStyle("-fx-background-color: " + "White");
-                break;
-            case "pane31":
-                pane31.setStyle("-fx-background-color: " + "White");
-                break;
-            case "pane32":
-                pane32.setStyle("-fx-background-color: " + "White");
-                break;
-            case "pane33":
-                pane33.setStyle("-fx-background-color: " + "White");
-                break;
-            case "pane34":
-                pane34.setStyle("-fx-background-color: " + "White");
-                break;
-            case "pane35":
-                pane35.setStyle("-fx-background-color: " + "White");
-                break;
-            case "pane36":
-                pane36.setStyle("-fx-background-color: " + "White");
-                break;
-            case "pane37":
-                pane37.setStyle("-fx-background-color: " + "White");
-                break;
-        }
-    }
-    
     //</editor-fold>
     
 // <editor-fold defaultstate="collapsed" desc="All the panes and Labels">
