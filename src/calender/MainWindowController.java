@@ -26,9 +26,9 @@ public class MainWindowController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+            calendar = Calendar.getInstance(); 
             fillPaneArray();
-            fillLabelArray();
-            calendar = Calendar.getInstance();            
+            fillLabelArray();         
             updateLabels(4, 2015);
     }
     
