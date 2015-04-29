@@ -300,22 +300,22 @@
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="6" GridPane.rowIndex="5" />
          </children>
       </GridPane>
-      <Label alignment="CENTER" layoutX="457.0" layoutY="8.0" prefHeight="69.0" prefWidth="154.0" text="Juni" textAlignment="CENTER" AnchorPane.leftAnchor="457.0" AnchorPane.rightAnchor="628.0">
+      <Label fx:id="monthLabel" alignment="CENTER" layoutX="311.0" layoutY="8.0" prefHeight="69.0" prefWidth="300.0" text="Juni" textAlignment="CENTER" AnchorPane.leftAnchor="311.0" AnchorPane.rightAnchor="628.0">
          <font>
             <Font size="47.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="601.0" layoutY="8.0" prefHeight="69.0" prefWidth="170.0" text="2015" AnchorPane.leftAnchor="601.0" AnchorPane.rightAnchor="468.0">
+      <Label fx:id="yearLabel" alignment="CENTER" layoutX="601.0" layoutY="8.0" prefHeight="69.0" prefWidth="170.0" text="2015" AnchorPane.leftAnchor="601.0" AnchorPane.rightAnchor="468.0">
          <font>
             <Font size="47.0" />
          </font>
       </Label>
-      <Label layoutX="1192.0" layoutY="8.0" prefHeight="69.0" prefWidth="33.0" text="&gt;" AnchorPane.rightAnchor="14.0">
+      <Label layoutX="1192.0" layoutY="8.0" onMouseClicked="#nextMonth" prefHeight="69.0" prefWidth="33.0" text="&gt;" AnchorPane.rightAnchor="14.0">
          <font>
             <Font size="47.0" />
          </font>
       </Label>
-      <Label layoutX="14.0" layoutY="8.0" prefHeight="69.0" prefWidth="44.0" text="&lt;" AnchorPane.leftAnchor="14.0">
+      <Label layoutX="14.0" layoutY="8.0" onMouseClicked="#previousMonth" prefHeight="69.0" prefWidth="44.0" text="&lt;" AnchorPane.leftAnchor="14.0">
          <font>
             <Font size="47.0" />
          </font>

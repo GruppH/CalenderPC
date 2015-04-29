@@ -29,7 +29,13 @@ public class MainWindowController implements Initializable {
             calendar = Calendar.getInstance(); 
             fillPaneArray();
             fillLabelArray();         
-            updateLabels(4, 2015);
+            setup();
+            updateLabels(month, year);
+    }
+    
+    public void setup(){
+        year = calendar.get(Calendar.YEAR);
+        month = calendar.get(Calendar.MONTH) +1;
     }
     
     
@@ -45,12 +51,36 @@ public class MainWindowController implements Initializable {
         p.setStyle("-fx-background-color: " + "white");
     }
     
+    @FXML
+    public void nextMonth(MouseEvent event){
+        resetCalender();
+        if (month == 12){
+            year++;
+            month = 1;
+            updateLabels(month, year);
+        } else {
+            month++;
+            updateLabels(month, year);
+        }
+    }
+    
+    @FXML
+    public void previousMonth(MouseEvent event){
+        resetCalender();
+        if (month == 1){
+            year--;
+            month = 12;
+            updateLabels(month, year);
+        } else {
+            month--;
+            updateLabels(month, year);
+        }
+    }
     
     
     public void updateLabels(int month,int year){
         int firstDay = getFirstWeekdayInMonth(month, year);
         int numberOfDays = getDaysInMonth(month, year);
-        System.out.println(numberOfDays);
         int days = 1;
         for (int i = 1; i < labels.length; i++) {
             if (i < firstDay){
@@ -68,6 +98,15 @@ public class MainWindowController implements Initializable {
                 days++;
             }
         }
+        monthLabel(month);
+        yearLabel.setText(String.valueOf(year));
+    }
+    
+    public void resetCalender(){
+        for (int i = 1; i < panes.length; i++) {
+                panes[i].setDisable(false);
+                panes[i].setStyle("-fx-background-color: white");
+            }
     }
     
     public int getFirstWeekdayInMonth(int month, int year){
@@ -101,8 +140,49 @@ public class MainWindowController implements Initializable {
     
     
     
-    
-    
+// <editor-fold defaultstate="collapsed" desc="Update the month label">    
+    public void monthLabel(int month){
+        switch (month){
+            case 1:
+                monthLabel.setText("Januari");
+                break;
+            case 2:
+                monthLabel.setText("Februari");
+                break;
+            case 3:
+                monthLabel.setText("Mars");
+                break;
+            case 4:
+                monthLabel.setText("April");
+                break;
+            case 5:
+                monthLabel.setText("Maj");
+                break;
+            case 6:
+                monthLabel.setText("Juni");
+                break;
+            case 7:
+                monthLabel.setText("Juli");
+                break;
+            case 8:
+                monthLabel.setText("Augusti");
+                break;
+            case 9:
+                monthLabel.setText("September");
+                break;
+            case 10:
+                monthLabel.setText("Oktober");
+                break;
+            case 11:
+                monthLabel.setText("November");
+                break;
+            case 12:
+                monthLabel.setText("December");
+                break;
+        }
+    }
+//</editor-fold>    
+     
 //<editor-fold defaultstate="collapsed" desc="Method for filling pane array">
     public void fillPaneArray(){
         panes[1] = pane1;
@@ -188,7 +268,11 @@ public class MainWindowController implements Initializable {
     }
     //</editor-fold>
     
-// <editor-fold defaultstate="collapsed" desc="All the panes and Labels">
+// <editor-fold defaultstate="collapsed" desc="All the references to panes and Labels">
+    @FXML
+    private Label monthLabel;
+    @FXML
+    private Label yearLabel;
     @FXML
     private Pane pane1;
     @FXML
