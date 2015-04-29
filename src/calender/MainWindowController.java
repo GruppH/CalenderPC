@@ -137,8 +137,7 @@ public class MainWindowController implements Initializable {
                 return 0;
         }
     }
-    
-    
+     
     
 // <editor-fold defaultstate="collapsed" desc="Update the month label">    
     public void monthLabel(int month){
@@ -182,6 +181,9 @@ public class MainWindowController implements Initializable {
         }
     }
 //</editor-fold>    
+    
+    
+    
      
 //<editor-fold defaultstate="collapsed" desc="Method for filling pane array">
     public void fillPaneArray(){
