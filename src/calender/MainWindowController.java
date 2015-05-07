@@ -28,7 +28,7 @@ public class MainWindowController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
             calendar = Calendar.getInstance(); 
             fillPaneArray();
-            fillLabelArray();         
+            fillLabelArray();  
             setup();
             updateLabels(month, year);
     }
