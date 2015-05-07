@@ -16,8 +16,8 @@ public class MainWindowController implements Initializable {
 
     private String hoverColor = "#6495ED";
     private Calendar calendar;
-    private Pane[] panes = new Pane[38];
-    private Label[] labels = new Label[38];
+    private Pane[] panes = new Pane[43];
+    private Label[] labels = new Label[43];
     private int year;
     private int month;
     private int day;
@@ -28,7 +28,7 @@ public class MainWindowController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
             calendar = Calendar.getInstance(); 
             fillPaneArray();
-            fillLabelArray();         
+            fillLabelArray();  
             setup();
             updateLabels(month, year);
     }
@@ -82,6 +82,7 @@ public class MainWindowController implements Initializable {
         int firstDay = getFirstWeekdayInMonth(month, year);
         int numberOfDays = getDaysInMonth(month, year);
         int days = 1;
+        int daysNextMonth = 1;
         for (int i = 1; i < labels.length; i++) {
             if (i < firstDay){
                 labels[i].setText("");
@@ -89,7 +90,8 @@ public class MainWindowController implements Initializable {
                 panes[i].setStyle("-fx-background-color: grey");
             }
             else if (days > numberOfDays){
-                labels[i].setText("");
+                labels[i].setText(String.valueOf(daysNextMonth));
+                daysNextMonth++;
                 panes[i].setDisable(true);
                 panes[i].setStyle("-fx-background-color: grey");
             }
@@ -223,7 +225,13 @@ public class MainWindowController implements Initializable {
         panes[34] = pane34;
         panes[35] = pane35;
         panes[36] = pane36;
-        panes[37] = pane37;               
+        panes[37] = pane37;    
+        panes[38] = pane38;    
+        panes[39] = pane39;    
+        panes[40] = pane40;    
+        panes[41] = pane41;    
+        panes[42] = pane42;    
+        
     }
     //</editor-fold>
     
@@ -266,7 +274,11 @@ public class MainWindowController implements Initializable {
         labels[35] = label35;   
         labels[36] = label36;   
         labels[37] = label37;   
-        
+        labels[38] = label38;
+        labels[39] = label39;
+        labels[40] = label40;
+        labels[41] = label41;
+        labels[42] = label42;
     }
     //</editor-fold>
     
@@ -350,6 +362,17 @@ public class MainWindowController implements Initializable {
     @FXML
     private Pane pane37;
     @FXML
+    private Pane pane38;
+    @FXML
+    private Pane pane39;
+    @FXML
+    private Pane pane40;
+    @FXML
+    private Pane pane41;
+    @FXML
+    private Pane pane42;
+    
+    @FXML
     private Label label1;
     @FXML
     private Label label2;
@@ -423,6 +446,17 @@ public class MainWindowController implements Initializable {
     private Label label36;
     @FXML
     private Label label37;
+    @FXML
+    private Label label38;
+    @FXML
+    private Label label39;
+    @FXML
+    private Label label40;
+    @FXML
+    private Label label41;
+    @FXML
+    private Label label42;
+    
 // </editor-fold>
     
     

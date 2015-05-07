@@ -5,6 +5,9 @@
  */
 package calender;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,6 +19,15 @@ import javafx.stage.Stage;
  * @author Niclas
  */
 public class Main extends Application {
+    private String address = "89.160.102.7:3306";
+    private String databaseName = null;
+    private String user = "ruut";
+    private String password = "rooot";
+    private Connection connection = null;
+    
+    public static void main(String[] args) {
+        launch(args);
+    }
     
     @Override
     public void start(Stage stage) throws Exception {
@@ -26,12 +38,15 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.show();
     }
+    
+    public void dataBaseConnection() {
+        try {
+            connection = (Connection) DriverManager.getConnection(
+                    "jdbc:mysql://"+ address +"/" + databaseName
+                    + "?user=" + user + "&password=" + password);
+        } catch (SQLException ex) {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        launch(args);
+        }
     }
     
 }
