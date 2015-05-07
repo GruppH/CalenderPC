@@ -63,6 +63,7 @@ public class MainWindowController implements Initializable {
             updateLabels(month, year);
         }
     }
+   
     
     @FXML
     public void previousMonth(MouseEvent event){
