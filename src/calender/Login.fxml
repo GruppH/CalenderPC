@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="276.0" prefWidth="417.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="calender.LoginController">
+   <children>
+      <Button fx:id="signInButton" layoutX="232.0" layoutY="159.0" mnemonicParsing="false" onAction="#signIn" text="Sign in" />
+      <Button fx:id="newUserButton" layoutX="127.0" layoutY="159.0" mnemonicParsing="false" text="New user" />
+      <TextField fx:id="passwordField" layoutX="127.0" layoutY="112.0" />
+      <TextField fx:id="nameField" layoutX="127.0" layoutY="66.0" />
+   </children>
+</AnchorPane>

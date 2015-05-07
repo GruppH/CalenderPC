@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="781.0" prefWidth="1105.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calender.MainWindowController">
+   <children>
+      <GridPane gridLinesVisible="true" layoutY="107.0" prefHeight="47.0" prefWidth="1239.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="107.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="6.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="38.0" prefWidth="170.0" text="    Måndag">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+               <children>
+                  <Label layoutX="14.0" layoutY="6.0" prefHeight="38.0" prefWidth="160.0" text="    Tisdag">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
+               <children>
+                  <Label layoutY="6.0" prefHeight="38.0" prefWidth="177.0" text="    Onsdag">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
+               <children>
+                  <Label layoutX="6.0" layoutY="6.0" prefHeight="38.0" prefWidth="170.0" text="    Torsdag">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4">
+               <children>
+                  <Label layoutX="6.0" layoutY="6.0" prefHeight="38.0" prefWidth="170.0" text="    Fredag">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5">
+               <children>
+                  <Label layoutY="6.0" prefHeight="38.0" prefWidth="177.0" text="    Lördag">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6">
+               <children>
+                  <Label layoutX="7.0" layoutY="6.0" prefHeight="38.0" prefWidth="170.0" text="    Söndag">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </GridPane>
+      <GridPane gridLinesVisible="true" layoutY="154.0" prefHeight="735.0" prefWidth="1239.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="154.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Pane fx:id="pane1" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;">
+               <children>
+                  <Label fx:id="label1" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane fx:id="pane2" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+               <children>
+                  <Label fx:id="label2" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane fx:id="pane3" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
+               <children>
+                  <Label fx:id="label3" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane fx:id="pane4" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
+               <children>
+                  <Label fx:id="label4" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane fx:id="pane5" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4">
+               <children>
+                  <Label fx:id="label5" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane fx:id="pane6" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5">
+               <children>
+                  <Label fx:id="label6" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane fx:id="pane7" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6">
+               <children>
+                  <Label fx:id="label7" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane fx:id="pane8" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+               <children>
+                  <Label fx:id="label8" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane fx:id="pane9" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <Label fx:id="label9" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane fx:id="pane10" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <children>
+                  <Label fx:id="label10" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane fx:id="pane11" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+               <children>
+                  <Label fx:id="label11" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane fx:id="pane12" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
+               <children>
+                  <Label fx:id="label12" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane fx:id="pane13" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1">
+               <children>
+                  <Label fx:id="label13" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane fx:id="pane14" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="1">
+               <children>
+                  <Label fx:id="label14" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane fx:id="pane15" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+               <children>
+                  <Label fx:id="label15" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane fx:id="pane16" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <children>
+                  <Label fx:id="label16" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane fx:id="pane17" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <children>
+                  <Label fx:id="label17" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane fx:id="pane18" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+               <children>
+                  <Label fx:id="label18" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane fx:id="pane19" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="2">
+               <children>
+                  <Label fx:id="label19" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane fx:id="pane20" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="2">
+               <children>
+                  <Label fx:id="label20" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane fx:id="pane21" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="2">
+               <children>
+                  <Label fx:id="label21" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane fx:id="pane22" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+               <children>
+                  <Label fx:id="label22" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane fx:id="pane23" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <children>
+                  <Label fx:id="label23" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane fx:id="pane24" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <children>
+                  <Label fx:id="label24" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane fx:id="pane25" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
+               <children>
+                  <Label fx:id="label25" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane fx:id="pane26" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="3">
+               <children>
+                  <Label fx:id="label26" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane fx:id="pane27" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="3">
+               <children>
+                  <Label fx:id="label27" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane fx:id="pane28" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="3">
+               <children>
+                  <Label fx:id="label28" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane fx:id="pane29" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
+               <children>
+                  <Label fx:id="label29" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane fx:id="pane30" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <children>
+                  <Label fx:id="label30" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane fx:id="pane31" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+               <children>
+                  <Label fx:id="label31" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane fx:id="pane32" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="4">
+               <children>
+                  <Label fx:id="label32" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane fx:id="pane33" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="4">
+               <children>
+                  <Label fx:id="label33" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane fx:id="pane34" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="4">
+               <children>
+                  <Label fx:id="label34" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane fx:id="pane35" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="4">
+               <children>
+                  <Label fx:id="label35" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane fx:id="pane36" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
+               <children>
+                  <Label fx:id="label36" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane fx:id="pane37" onMouseEntered="#mouseHover" onMouseExited="#mouseLeave" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <children>
+                  <Label fx:id="label37" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane fx:id="pane38" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="2" GridPane.rowIndex="5">
+               <children>
+                  <Label fx:id="label38" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children></Pane>
+            <Pane fx:id="pane39" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="3" GridPane.rowIndex="5">
+               <children>
+                  <Label fx:id="label39" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children></Pane>
+            <Pane fx:id="pane40" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="4" GridPane.rowIndex="5">
+               <children>
+                  <Label fx:id="label40" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children></Pane>
+            <Pane fx:id="pane41" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="5" GridPane.rowIndex="5">
+               <children>
+                  <Label fx:id="label41" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children></Pane>
+            <Pane fx:id="pane42" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="6" GridPane.rowIndex="5">
+               <children>
+                  <Label fx:id="label42" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children></Pane>
+         </children>
+      </GridPane>
+      <Label fx:id="monthLabel" alignment="CENTER" layoutX="278.0" layoutY="24.0" prefHeight="69.0" prefWidth="275.0" text="Juni" textAlignment="CENTER" AnchorPane.leftAnchor="278.0" AnchorPane.rightAnchor="552.0">
+         <font>
+            <Font size="47.0" />
+         </font>
+      </Label>
+      <Label fx:id="yearLabel" alignment="CENTER" layoutX="553.0" layoutY="24.0" prefHeight="69.0" prefWidth="145.0" text="2015" AnchorPane.leftAnchor="553.0" AnchorPane.rightAnchor="407.0">
+         <font>
+            <Font size="47.0" />
+         </font>
+      </Label>
+      <Label layoutX="1192.0" layoutY="24.0" onMouseClicked="#nextMonth" prefHeight="69.0" prefWidth="33.0" text="&gt;" AnchorPane.rightAnchor="14.0">
+         <font>
+            <Font size="47.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="24.0" onMouseClicked="#previousMonth" prefHeight="69.0" prefWidth="44.0" text="&lt;" AnchorPane.leftAnchor="14.0">
+         <font>
+            <Font size="47.0" />
+         </font>
+      </Label>
+      <MenuBar layoutY="-1.0" prefHeight="23.0" prefWidth="1239.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </children>
+</AnchorPane>
