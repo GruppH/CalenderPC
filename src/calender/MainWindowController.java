@@ -64,7 +64,6 @@ public class MainWindowController implements Initializable {
         }
     }
    
-    
     @FXML
     public void previousMonth(MouseEvent event){
         resetCalender();
