@@ -26,7 +26,7 @@ public class Connect {
     private ResultSet resultSet;
 
     //PUUUUUUSH
-    
+    // PULLLLAAAAA
     public Connect() {
         databaseConnection();
     }
