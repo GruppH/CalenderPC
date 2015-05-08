@@ -19,11 +19,6 @@ import javafx.stage.Stage;
  * @author Niclas
  */
 public class Main extends Application {
-    private String address = "89.160.102.7:3306";
-    private String databaseName = null;
-    private String user = "ruut";
-    private String password = "rooot";
-    private Connection connection = null;
     
     public static void main(String[] args) {
         launch(args);
@@ -31,22 +26,10 @@ public class Main extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("MainWindow.fxml"));
-        
+        Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
         Scene scene = new Scene(root);
-        
         stage.setScene(scene);
         stage.show();
-    }
-    
-    public void dataBaseConnection() {
-        try {
-            connection = (Connection) DriverManager.getConnection(
-                    "jdbc:mysql://"+ address +"/" + databaseName
-                    + "?user=" + user + "&password=" + password);
-        } catch (SQLException ex) {
-
-        }
     }
     
 }
