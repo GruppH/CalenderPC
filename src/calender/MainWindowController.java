@@ -1,16 +1,21 @@
 package calender;
 
 import java.awt.event.*;
+import java.io.IOException;
 import java.net.URL;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 public class MainWindowController implements Initializable {
 
@@ -22,6 +27,17 @@ public class MainWindowController implements Initializable {
     private int month;
     private int day;
     private int weekday;
+    
+    @FXML
+    public void openDayView(MouseEvent event) throws IOException {
+        Pane p = (Pane) event.getSource();
+
+        Stage stage = new Stage();
+        AnchorPane root = FXMLLoader.load(Main.class.getResource("DayView.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
     
 
     @Override
