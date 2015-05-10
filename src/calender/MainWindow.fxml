@@ -89,7 +89,7 @@
             </Pane>
          </children>
       </GridPane>
-      <GridPane gridLinesVisible="true" layoutY="154.0" prefHeight="735.0" prefWidth="1239.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="154.0">
+      <GridPane gridLinesVisible="true" layoutY="154.0" onMouseClicked="#openDayView" prefHeight="735.0" prefWidth="1239.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="154.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
