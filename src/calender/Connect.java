@@ -21,19 +21,17 @@ public class Connect {
     private String databaseName = "projekt";
     private String databaseUser = "ruut";
     private String databasePassword = "rooot";
-    //private String result;
     private Statement statement;
     private ResultSet resultSet;
-
-    //PUUUUUUSH
-    // PULLLLAAAAA
+    private String latestActivity;
+    
     public Connect() {
         databaseConnection();
     }
 
     public void databaseConnection() {
         try {
-            Class.forName("com.mysql.jdbc.Driver").newInstance();
+            Class.forName(driver).newInstance();
             connection = DriverManager.getConnection(
                     "jdbc:mysql://" + databaseAddress + "/" + databaseName
                     + "?user=" + databaseUser + "&password=" + databasePassword);
@@ -58,5 +56,9 @@ public class Connect {
         }
 
         return result;
+    }
+    
+    public void getActivities() {
+        
     }
 }
