@@ -25,9 +25,9 @@ public class DayViewController implements Initializable {
         this.year = year;
         this.month = month;
         this.day = day;
-        System.out.println(year);
-        System.out.println(month);
-        System.out.println(day);
+        System.out.println("Year: "+year);
+        System.out.println("Month: "+month);
+        System.out.println("Day: " +day);
     }
     
     @Override
