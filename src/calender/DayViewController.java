@@ -7,7 +7,11 @@ package calender;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ListView;
 
 /**
  * FXML Controller class
@@ -25,14 +29,20 @@ public class DayViewController implements Initializable {
         this.year = year;
         this.month = month;
         this.day = day;
-        System.out.println("Year: "+year);
-        System.out.println("Month: "+month);
-        System.out.println("Day: " +day);
     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        ObservableList<String> list = FXCollections.observableArrayList();
+        list.add("asdasd");
+        listView.setItems(list);
+        list.add("JJJJ");
+        listView.setStyle("-fx-font-size:18");
     }    
+    
+    
+    
+    @FXML
+    private ListView listView;
     
 }
