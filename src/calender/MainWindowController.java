@@ -3,13 +3,17 @@ package calender;
 import java.awt.event.*;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Label;
@@ -27,38 +31,39 @@ public class MainWindowController implements Initializable {
     private int month;
     private int day;
     private int weekday;
-    
+
     @FXML
     public void openDayView(MouseEvent event) throws IOException {
-        Pane p = (Pane) event.getSource();
-
-        Stage stage = new Stage();
-        AnchorPane root = FXMLLoader.load(Main.class.getResource("DayView.fxml"));
+        
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("DayView.fxml"));
+        Parent root = (Parent) fxmlLoader.load();
+        DayViewController controller = fxmlLoader.<DayViewController>getController();
+        controller.setTheActiveDate(year, month, day);
         Scene scene = new Scene(root);
+        Stage stage = new Stage();
         stage.setScene(scene);
         stage.show();
     }
-    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-            calendar = Calendar.getInstance(); 
-            fillPaneArray();
-            fillLabelArray();  
-            setup();
-            updateLabels(month, year);
+        calendar = Calendar.getInstance();
+        fillPaneArray();
+        fillLabelArray();
+        setup();
+        updateLabels(month, year);
     }
-    
-    public void setup(){
+
+    public void setup() {
         year = calendar.get(Calendar.YEAR);
-        month = calendar.get(Calendar.MONTH) +1;
+        month = calendar.get(Calendar.MONTH) + 1;
     }
-    
-    
-    
+
     @FXML
     public void mouseHover(MouseEvent event) {
         Pane p = (Pane) event.getSource();
+        Label l = (Label) p.getChildren().get(0);
+        day = Integer.parseInt(l.getText());
         p.setStyle("-fx-background-color: " + hoverColor);
     }
 
@@ -67,11 +72,11 @@ public class MainWindowController implements Initializable {
         Pane p = (Pane) event.getSource();
         p.setStyle("-fx-background-color: " + "white");
     }
-    
+
     @FXML
-    public void nextMonth(MouseEvent event){
+    public void nextMonth(MouseEvent event) {
         resetCalender();
-        if (month == 12){
+        if (month == 12) {
             year++;
             month = 1;
             updateLabels(month, year);
@@ -80,11 +85,11 @@ public class MainWindowController implements Initializable {
             updateLabels(month, year);
         }
     }
-   
+
     @FXML
-    public void previousMonth(MouseEvent event){
+    public void previousMonth(MouseEvent event) {
         resetCalender();
-        if (month == 1){
+        if (month == 1) {
             year--;
             month = 12;
             updateLabels(month, year);
@@ -93,26 +98,23 @@ public class MainWindowController implements Initializable {
             updateLabels(month, year);
         }
     }
-    
-    
-    public void updateLabels(int month,int year){
+
+    public void updateLabels(int month, int year) {
         int firstDay = getFirstWeekdayInMonth(month, year);
         int numberOfDays = getDaysInMonth(month, year);
         int days = 1;
         int daysNextMonth = 1;
         for (int i = 1; i < labels.length; i++) {
-            if (i < firstDay){
+            if (i < firstDay) {
                 labels[i].setText("");
                 panes[i].setDisable(true);
                 panes[i].setStyle("-fx-background-color: grey");
-            }
-            else if (days > numberOfDays){
+            } else if (days > numberOfDays) {
                 labels[i].setText(String.valueOf(daysNextMonth));
                 daysNextMonth++;
                 panes[i].setDisable(true);
                 panes[i].setStyle("-fx-background-color: grey");
-            }
-            else {
+            } else {
                 labels[i].setText(String.valueOf(days));
                 days++;
             }
@@ -120,34 +122,43 @@ public class MainWindowController implements Initializable {
         monthLabel(month);
         yearLabel.setText(String.valueOf(year));
     }
-    
-    public void resetCalender(){
+
+    public void resetCalender() {
         for (int i = 1; i < panes.length; i++) {
-                panes[i].setDisable(false);
-                panes[i].setStyle("-fx-background-color: white");
-            }
+            panes[i].setDisable(false);
+            panes[i].setStyle("-fx-background-color: white");
+        }
     }
-    
-    public int getFirstWeekdayInMonth(int month, int year){
+
+    public int getFirstWeekdayInMonth(int month, int year) {
         Calendar cal = Calendar.getInstance();
-        cal.set(year, month-1, 1);
-        int result = cal.get(Calendar.DAY_OF_WEEK)-1;
-        if (result == 0){
+        cal.set(year, month - 1, 1);
+        int result = cal.get(Calendar.DAY_OF_WEEK) - 1;
+        if (result == 0) {
             result = 7;
         }
         return result;
     }
-    
-    public int getDaysInMonth(int month, int year){
+
+    public int getDaysInMonth(int month, int year) {
         Calendar cal = Calendar.getInstance();
         cal.set(year, month, 1);
-        switch (month){
-            case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+        switch (month) {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
                 return 31;
-            case 4: case 6: case 9: case 11:
+            case 4:
+            case 6:
+            case 9:
+            case 11:
                 return 30;
             case 2:
-                if (cal.getActualMaximum(Calendar.DAY_OF_YEAR) > 365){
+                if (cal.getActualMaximum(Calendar.DAY_OF_YEAR) > 365) {
                     return 29;
                 } else {
                     return 28;
@@ -156,11 +167,10 @@ public class MainWindowController implements Initializable {
                 return 0;
         }
     }
-     
-    
+
 // <editor-fold defaultstate="collapsed" desc="Update the month label">    
-    public void monthLabel(int month){
-        switch (month){
+    public void monthLabel(int month) {
+        switch (month) {
             case 1:
                 monthLabel.setText("Januari");
                 break;
@@ -200,12 +210,9 @@ public class MainWindowController implements Initializable {
         }
     }
 //</editor-fold>    
-    
-    
-    
-     
+
 //<editor-fold defaultstate="collapsed" desc="Method for filling pane array">
-    public void fillPaneArray(){
+    public void fillPaneArray() {
         panes[1] = pane1;
         panes[2] = pane2;
         panes[3] = pane3;
@@ -242,55 +249,55 @@ public class MainWindowController implements Initializable {
         panes[34] = pane34;
         panes[35] = pane35;
         panes[36] = pane36;
-        panes[37] = pane37;    
-        panes[38] = pane38;    
-        panes[39] = pane39;    
-        panes[40] = pane40;    
-        panes[41] = pane41;    
-        panes[42] = pane42;    
-        
+        panes[37] = pane37;
+        panes[38] = pane38;
+        panes[39] = pane39;
+        panes[40] = pane40;
+        panes[41] = pane41;
+        panes[42] = pane42;
+
     }
     //</editor-fold>
-    
+
 //<editor-fold defaultstate="collapsed" desc="Method for filling label array">
-    public void fillLabelArray(){
+    public void fillLabelArray() {
         labels[1] = label1;
-        labels[2] = label2;   
-        labels[3] = label3;   
-        labels[4] = label4;   
-        labels[5] = label5;   
-        labels[6] = label6;   
-        labels[7] = label7;   
-        labels[8] = label8;   
-        labels[9] = label9;   
-        labels[10] = label10;   
-        labels[11] = label11;   
-        labels[12] = label12;   
-        labels[13] = label13;   
-        labels[14] = label14;   
-        labels[15] = label15;   
-        labels[16] = label16;   
-        labels[17] = label17;   
-        labels[18] = label18;   
-        labels[19] = label19;   
-        labels[20] = label20;   
-        labels[21] = label21;   
-        labels[22] = label22;   
-        labels[23] = label23;   
-        labels[24] = label24;   
-        labels[25] = label25;   
-        labels[26] = label26;   
-        labels[27] = label27;   
-        labels[28] = label28;   
-        labels[29] = label29;   
-        labels[30] = label30;   
-        labels[31] = label31;   
-        labels[32] = label32;   
-        labels[33] = label33;   
-        labels[34] = label34;   
-        labels[35] = label35;   
-        labels[36] = label36;   
-        labels[37] = label37;   
+        labels[2] = label2;
+        labels[3] = label3;
+        labels[4] = label4;
+        labels[5] = label5;
+        labels[6] = label6;
+        labels[7] = label7;
+        labels[8] = label8;
+        labels[9] = label9;
+        labels[10] = label10;
+        labels[11] = label11;
+        labels[12] = label12;
+        labels[13] = label13;
+        labels[14] = label14;
+        labels[15] = label15;
+        labels[16] = label16;
+        labels[17] = label17;
+        labels[18] = label18;
+        labels[19] = label19;
+        labels[20] = label20;
+        labels[21] = label21;
+        labels[22] = label22;
+        labels[23] = label23;
+        labels[24] = label24;
+        labels[25] = label25;
+        labels[26] = label26;
+        labels[27] = label27;
+        labels[28] = label28;
+        labels[29] = label29;
+        labels[30] = label30;
+        labels[31] = label31;
+        labels[32] = label32;
+        labels[33] = label33;
+        labels[34] = label34;
+        labels[35] = label35;
+        labels[36] = label36;
+        labels[37] = label37;
         labels[38] = label38;
         labels[39] = label39;
         labels[40] = label40;
@@ -298,7 +305,7 @@ public class MainWindowController implements Initializable {
         labels[42] = label42;
     }
     //</editor-fold>
-    
+
 // <editor-fold defaultstate="collapsed" desc="All the references to panes and Labels">
     @FXML
     private Label monthLabel;
@@ -388,7 +395,7 @@ public class MainWindowController implements Initializable {
     private Pane pane41;
     @FXML
     private Pane pane42;
-    
+
     @FXML
     private Label label1;
     @FXML
@@ -473,8 +480,6 @@ public class MainWindowController implements Initializable {
     private Label label41;
     @FXML
     private Label label42;
-    
+
 // </editor-fold>
-    
-    
 }
