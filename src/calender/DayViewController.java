@@ -28,21 +28,14 @@ import javafx.stage.Stage;
  * @author calleskanshed
  */
 public class DayViewController implements Initializable {
-    SavedData sd = new SavedData();
     int year;
     int month;
     int day;
-    String yearString;
-    String monthString;
-    String dayString;
     private Stage stage;
+    ObservableList<String> list;
     
     @FXML
     Button newActivityButton = new Button();
-    
-    /*public void newActivity() throws IOException {
-        openNewActivity();
-    }*/
     
     public void changeWindow() throws IOException {
         stage = (Stage) newActivityButton.getScene().getWindow();
@@ -53,34 +46,20 @@ public class DayViewController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-    
-    
-    
+
     public void setTheActiveDate(int year,int month, int day){
         this.year = year;
         this.month = month;
         this.day = day;
-        yearString = Integer.toString(year);
-        monthString = Integer.toString(month);
-        dayString = Integer.toString(day);
-        System.out.println(yearString+monthString+dayString);
     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ObservableList<String> list = FXCollections.observableArrayList();
-        sd.save(yearString+monthString+dayString, "bejehej");
-       
-        list.add(sd.getData(yearString + monthString + dayString));
-
+        list = FXCollections.observableArrayList();
         listView.setItems(list);
-        
-        //list.add("JJJJ");
         listView.setStyle("-fx-font-size:18");
     }    
-    
-    
-    
+
     @FXML
     private ListView listView;
     

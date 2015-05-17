@@ -18,7 +18,7 @@ import javafx.stage.Stage;
  *
  * @author calleskanshed
  */
-public class NewActivityController implements Initializable {
+public class NewActivityController extends MainWindowController implements Initializable  {
 
     /**
      * Initializes the controller class.
@@ -54,8 +54,9 @@ public class NewActivityController implements Initializable {
             System.out.println("" + b);
             String e = ends.getText();
             System.out.println("" + e);
-            System.out.println("hej" + dvc.dayString);
-            sd.save(dvc.yearString+dvc.monthString+dvc.dayString+b, e+ ":" + title + ":" + info);
+
+            System.out.println("hej" + getYear());
+            //sd.save(dvc.yearString+dvc.monthString+dvc.dayString+b, e+ ":" + title + ":" + info);
         } catch (Exception ex) {
 
         }

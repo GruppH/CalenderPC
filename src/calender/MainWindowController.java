@@ -32,7 +32,26 @@ public class MainWindowController implements Initializable {
     private int day;
     private int weekday;
     private DayViewController controller;
+    private SavedData sd = new SavedData();
+    
+    
+    public MainWindowController() {
+        
+    }
 
+    public int getYear() {
+        return year;
+    }
+    
+    public int getMonth() {
+        return month;
+    }
+    
+    public int getDay() {
+        return day;
+    }
+    
+    
     public void testSavedData() {
         SavedData sd = new SavedData();
         sd.save("2015517", "number 1");
@@ -43,8 +62,10 @@ public class MainWindowController implements Initializable {
             for (int j = 0; j < 60; j++) {
                 String i1 = Integer.toString(i);
                 String j1 = Integer.toString(j);
+                System.out.println(":::::" + year + month + day + i1 + j1);
                 if (sd.getData(year + month + day + i1 + j1) != null) {
-                    sd.getData(year + month + day + i1 + j1);
+                    
+                    System.out.println(sd.getData(year + month + day + i1 + j1));
                 }
             }
         }
@@ -57,6 +78,7 @@ public class MainWindowController implements Initializable {
         Parent root = (Parent) fxmlLoader.load();
         controller = fxmlLoader.<DayViewController>getController();
         controller.setTheActiveDate(year, month, day);
+        controller.list.add(sd.getData(Integer.toString(year) + Integer.toString(month) + Integer.toString(day)));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
@@ -66,7 +88,6 @@ public class MainWindowController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         testSavedData();
-        
         calendar = Calendar.getInstance();
         fillPaneArray();
         fillLabelArray();
