@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  * @author calleskanshed
  */
 public class SavedData {
-
+    
     public SavedData() {
 
     }

@@ -27,30 +27,48 @@ import javafx.stage.Stage;
  *
  * @author calleskanshed
  */
-public class DayViewController implements Initializable {
-    int year;
-    int month;
-    int day;
+public class DayViewController extends MainWindowController implements Initializable {
+    private int year;
+    private int month;
+    private int day;
     private Stage stage;
     ObservableList<String> list;
+    NewActivityController nac;
     
     @FXML
     Button newActivityButton = new Button();
     
     public void changeWindow() throws IOException {
-        stage = (Stage) newActivityButton.getScene().getWindow();
-        stage.close();
-        stage = new Stage();
-        AnchorPane root = FXMLLoader.load(Main.class.getResource("NewActivity.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NewActivity.fxml"));
+        Parent root = (Parent) fxmlLoader.load();
+        nac = fxmlLoader.<NewActivityController>getController();
+        nac.setTheActiveDate(year, month, day);
+        nac.setSD(getSavedData());
+        //controller.list.add(sd.getData(Integer.toString(year) + Integer.toString(month) + Integer.toString(day)));
+        
         Scene scene = new Scene(root);
+        Stage stage = new Stage();
         stage.setScene(scene);
         stage.show();
     }
 
     public void setTheActiveDate(int year,int month, int day){
         this.year = year;
+        System.out.println("this.year= " + year);
         this.month = month;
         this.day = day;
+    }
+    
+    public int getYear() {
+        return this.year;
+    }
+    
+    public int getMonth() {
+        return month;
+    }
+    
+    public int getDay() {
+        return day;
     }
     
     @Override

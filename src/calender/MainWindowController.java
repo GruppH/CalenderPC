@@ -39,16 +39,8 @@ public class MainWindowController implements Initializable {
         
     }
 
-    public int getYear() {
-        return year;
-    }
-    
-    public int getMonth() {
-        return month;
-    }
-    
-    public int getDay() {
-        return day;
+    public SavedData getSavedData() {
+        return sd;
     }
     
     
@@ -79,6 +71,7 @@ public class MainWindowController implements Initializable {
         controller = fxmlLoader.<DayViewController>getController();
         controller.setTheActiveDate(year, month, day);
         controller.list.add(sd.getData(Integer.toString(year) + Integer.toString(month) + Integer.toString(day)));
+        
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
@@ -87,7 +80,7 @@ public class MainWindowController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        testSavedData();
+        //testSavedData();
         calendar = Calendar.getInstance();
         fillPaneArray();
         fillLabelArray();

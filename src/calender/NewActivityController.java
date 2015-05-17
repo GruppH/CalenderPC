@@ -18,14 +18,17 @@ import javafx.stage.Stage;
  *
  * @author calleskanshed
  */
-public class NewActivityController extends MainWindowController implements Initializable  {
+public class NewActivityController extends DayViewController implements Initializable  {
 
     /**
      * Initializes the controller class.
      */
     private Stage stage;
+    private int year;
+    private int month;
+    private int day;
+    private SavedData sd;
 
-    private SavedData sd = new SavedData();
     private DayViewController dvc;
 
     @FXML
@@ -46,8 +49,22 @@ public class NewActivityController extends MainWindowController implements Initi
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
+        
     }
-
+    
+    public void setTheActiveDate(int year,int month, int day){
+        this.year = year;
+        this.month = month;
+        this.day = day;
+        System.out.println("YEAR: " + year + " MONTH: " + month + " DAY: " + day);
+    }
+    
+    public void setSD(SavedData sd) {
+        this.sd = sd;
+    }
+    
+    
     public void addActivity() {
         try {
             String b = begins.getText();
@@ -55,8 +72,9 @@ public class NewActivityController extends MainWindowController implements Initi
             String e = ends.getText();
             System.out.println("" + e);
 
-            System.out.println("hej" + getYear());
-            //sd.save(dvc.yearString+dvc.monthString+dvc.dayString+b, e+ ":" + title + ":" + info);
+            System.out.println("hej" + year);
+            System.out.println("day to save: " + year + month + day);
+            sd.save(Integer.toString(year)+Integer.toString(month)+Integer.toString(day), e+ ":" + title + ":" + info);
         } catch (Exception ex) {
 
         }
