@@ -31,13 +31,31 @@ public class MainWindowController implements Initializable {
     private int month;
     private int day;
     private int weekday;
+    private DayViewController controller;
+
+    public void testSavedData() {
+        SavedData sd = new SavedData();
+        sd.save("2015517", "number 1");
+        System.out.println(sd.getData("17-5-15"));
+        System.out.println(sd.getAllData());
+        System.out.println("TESTAR");
+        for (int i = 0; i < 24; i++) {
+            for (int j = 0; j < 60; j++) {
+                String i1 = Integer.toString(i);
+                String j1 = Integer.toString(j);
+                if (sd.getData(year + month + day + i1 + j1) != null) {
+                    sd.getData(year + month + day + i1 + j1);
+                }
+            }
+        }
+    }
 
     @FXML
     public void openDayView(MouseEvent event) throws IOException {
-        
+
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("DayView.fxml"));
         Parent root = (Parent) fxmlLoader.load();
-        DayViewController controller = fxmlLoader.<DayViewController>getController();
+        controller = fxmlLoader.<DayViewController>getController();
         controller.setTheActiveDate(year, month, day);
         Scene scene = new Scene(root);
         Stage stage = new Stage();
@@ -47,6 +65,8 @@ public class MainWindowController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        testSavedData();
+        
         calendar = Calendar.getInstance();
         fillPaneArray();
         fillLabelArray();
