@@ -88,6 +88,7 @@ public class SavedData {
             while (e.hasMoreElements()) {
                 String date = (String) e.nextElement();
                 String value = saveFile.getProperty(date);
+                System.out.println("" + date + " : "+ value);
                 return date + ":" + value;
             }
 

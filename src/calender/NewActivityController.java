@@ -74,7 +74,7 @@ public class NewActivityController extends DayViewController implements Initiali
 
             System.out.println("hej" + year);
             System.out.println("day to save: " + year + month + day);
-            sd.save(Integer.toString(year)+Integer.toString(month)+Integer.toString(day), e+ ":" + title + ":" + info);
+            sd.save(Integer.toString(year)+Integer.toString(month)+Integer.toString(day), e/*+ ":" + title + ":" + info*/);
         } catch (Exception ex) {
 
         }
