@@ -34,6 +34,7 @@ public class DayViewController extends MainWindowController implements Initializ
     private Stage stage;
     ObservableList<String> list;
     NewActivityController nac;
+    private Connect connect;
     
     @FXML
     Button newActivityButton = new Button();
@@ -43,7 +44,7 @@ public class DayViewController extends MainWindowController implements Initializ
         Parent root = (Parent) fxmlLoader.load();
         nac = fxmlLoader.<NewActivityController>getController();
         nac.setTheActiveDate(year, month, day);
-        nac.setSD(getSavedData());
+        //nac.setSD(getSavedData());
         //controller.list.add(sd.getData(Integer.toString(year) + Integer.toString(month) + Integer.toString(day)));
         
         Scene scene = new Scene(root);

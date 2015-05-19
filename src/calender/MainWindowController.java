@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -31,9 +32,11 @@ public class MainWindowController implements Initializable {
     private int month;
     private int day;
     private int weekday;
-    private DayViewController controller;
+    private DayViewController dvc;
     private SavedData sd = new SavedData();
-    
+    private Connect connect;
+    ObservableList<String> list;
+    private String[] array;
     
     public MainWindowController() {
         
@@ -42,36 +45,22 @@ public class MainWindowController implements Initializable {
     public SavedData getSavedData() {
         return sd;
     }
-    
-    
-    public void testSavedData() {
-        SavedData sd = new SavedData();
-        sd.save("2015517", "number 1");
-        System.out.println(sd.getData("17-5-15"));
-        System.out.println(sd.getAllData());
-        System.out.println("TESTAR");
-        for (int i = 0; i < 24; i++) {
-            for (int j = 0; j < 60; j++) {
-                String i1 = Integer.toString(i);
-                String j1 = Integer.toString(j);
-                System.out.println(":::::" + year + month + day + i1 + j1);
-                if (sd.getData(year + month + day + i1 + j1) != null) {
-                    
-                    System.out.println(sd.getData(year + month + day + i1 + j1));
-                }
-            }
-        }
-    }
 
     @FXML
     public void openDayView(MouseEvent event) throws IOException {
-
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("DayView.fxml"));
         Parent root = (Parent) fxmlLoader.load();
-        controller = fxmlLoader.<DayViewController>getController();
-        controller.setTheActiveDate(year, month, day);
-        controller.list.add(sd.getData(Integer.toString(year) + Integer.toString(month) + Integer.toString(day)));
-        
+        dvc = fxmlLoader.<DayViewController>getController();
+        dvc.setTheActiveDate(year, month, day);
+        try {
+            System.out.println("DATUMET: " + Integer.toString(year) + Integer.toString(month) + Integer.toString(day));
+            array = connect.getActivities("hassel", Integer.toString(year) + Integer.toString(month) + Integer.toString(day));
+            for(int i=0; i<array.length; i++) {
+                dvc.list.add(array[i]);
+            }
+        } catch(Exception ex) {
+            
+        }
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
@@ -81,6 +70,7 @@ public class MainWindowController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //testSavedData();
+        connect = new Connect();
         calendar = Calendar.getInstance();
         fillPaneArray();
         fillLabelArray();
