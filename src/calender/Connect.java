@@ -117,7 +117,6 @@ public class Connect {
 
             while (resultSet.next()) {
                 ends = resultSet.getString("ends");
-                System.out.println("ends: " + ends);
                 notes = resultSet.getString("notes");
                 location = resultSet.getString("location");
             }
@@ -125,7 +124,12 @@ public class Connect {
         } catch (SQLException ex) {
             Logger.getLogger(Connect.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return ends + notes + location;
+        if (ends != null) {
+            return "Ends:" + ends + "\r\n" + "Notes: " + notes + "\r\n" + "Location: " + location;
+        } else {
+            return "";
+        }
+
     }
 
 }

@@ -7,6 +7,7 @@ package calender;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Collections;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -44,7 +45,8 @@ public class DayViewController extends MainWindowController implements Initializ
     private ListView listView;
     @FXML
     Button newActivityButton = new Button();
-
+    private String activity;
+    
     public void getSelectedItem() {
         listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -52,12 +54,15 @@ public class DayViewController extends MainWindowController implements Initializ
                 //System.out.println("ListView selection changed from oldValue = "
                   //      + oldValue + " to newValue = " + newValue);
                 selectedItem = newValue;
-                System.out.println("selectedItem: " + selectedItem);
+                //System.out.println("selectedItem: " + selectedItem);
                 String substring = selectedItem.substring(0,2);
-                System.out.println("substring: " +substring);
-                String activity = connect.getActivity(getUsername(), Integer.toString(year) + Integer.toString(month) + Integer.toString(day), substring);
+                System.out.println("substring: " + substring);
+                activity = connect.getActivity(getUsername(), Integer.toString(year) + Integer.toString(month) + Integer.toString(day), substring);
                 System.out.println("" + activity);
-                list.add(activity);
+                String a = "hejhejhej";
+                Collections.replaceAll(list, selectedItem, a);
+
+
             }
         });
     }
@@ -91,7 +96,7 @@ public class DayViewController extends MainWindowController implements Initializ
         list = FXCollections.observableArrayList();
         listView.setItems(list);
         listView.setStyle("-fx-font-size:18");
-        //getSelectedItem();
+        getSelectedItem();
         connect = new Connect();
     }
 
