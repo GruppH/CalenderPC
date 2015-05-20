@@ -65,12 +65,8 @@ public class Connect {
         String[] array = new String[]{"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"};
         String userName = null;
         String activity = null;
-        String notes = null;
         String begins = null;
-        String ends = null;
-        String date = null;
-        String location = null;
-        String send = "hej";
+
         try {
             statement = connection.createStatement();
             resultSet = statement.executeQuery("select * from calendar where username='" + username + "' and date='" + dateToReceive + "'");
@@ -78,17 +74,9 @@ public class Connect {
             while (resultSet.next()) {
                 begins = resultSet.getString("begins");
                 activity = resultSet.getString("activity");
-                notes = resultSet.getString("notes");
-                begins = resultSet.getString("begins");
-                ends = resultSet.getString("ends");
-                date = resultSet.getString("date");
-                location = resultSet.getString("location");
 
-                System.out.println("arr: " + array[i]);
-
-                String result = resultSet.getString("begins");
                 for (int j = 0; j < array.length; j++) {
-                    if (result.contentEquals(Integer.toString(j))) {
+                    if (begins.contentEquals(Integer.toString(j))) {
                         array[j] = array[j] + "   " + activity;
                     }
                 }
@@ -99,19 +87,45 @@ public class Connect {
         }
         return array;
     }
-    
-    public void newActivity(String username, String activity, String notes, 
+
+    public void newActivity(String username, String activity, String notes,
             String begins, String ends, String location, String date) {
         try {
             statement = connection.createStatement();
             statement.executeUpdate(
-                    "INSERT INTO calendar (username,activity,notes,begins,ends,location,date)" +
-            "VALUES ('"+ username + "','" + activity + "','" + notes + "','" + 
-                            begins + "','" + ends + "','" + location + "'," + 
-                            date + ");");
-        } catch(SQLException ex) {
-            
+                    "INSERT INTO calendar (username,activity,notes,begins,ends,location,date)"
+                    + "VALUES ('" + username + "','" + activity + "','" + notes + "','"
+                    + begins + "','" + ends + "','" + location + "',"
+                    + date + ");");
+        } catch (SQLException ex) {
+
         }
     }
-    
+
+    public String getActivity(String username, String dateToReceive, String startTime) {
+        String userName = null;
+        String activity = null;
+        String begins = null;
+        String notes = null;
+        String ends = null;
+        String date = null;
+        String location = null;
+
+        try {
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery("select * from calendar where username='" + username + "' and date='" + dateToReceive + "' and begins='" + startTime + "'");
+
+            while (resultSet.next()) {
+                ends = resultSet.getString("ends");
+                System.out.println("ends: " + ends);
+                notes = resultSet.getString("notes");
+                location = resultSet.getString("location");
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Connect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return ends + notes + location;
+    }
+
 }

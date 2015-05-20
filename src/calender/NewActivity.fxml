@@ -22,11 +22,11 @@
       </Label>
       <Label layoutX="121.0" layoutY="91.0" text="Start" />
       <Label layoutX="242.0" layoutY="91.0" text="End" />
-      <Label layoutX="108.0" layoutY="151.0" text="H" />
+      <Label layoutX="104.0" layoutY="151.0" text="H" />
       <Label layoutX="144.0" layoutY="151.0" text="Min" />
-      <Label layoutX="223.0" layoutY="151.0" prefHeight="16.0" prefWidth="0.0" text="H" />
+      <Label layoutX="225.0" layoutY="151.0" prefHeight="17.0" prefWidth="9.0" text="H" />
       <Label layoutX="263.0" layoutY="151.0" text="Min" />
-      <Label fx:id="errorLabel" layoutX="144.0" layoutY="167.0" text="Wrong format!!" textFill="#ee0101" />
+      <Label fx:id="errorLabel" layoutX="147.0" layoutY="57.0" text="Wrong format!!" textFill="#ee0101" />
       <TextField fx:id="activityTextField" layoutX="90.0" layoutY="189.0" prefHeight="26.0" prefWidth="200.0" promptText="Activity" />
       <TextField fx:id="locationTextField" layoutX="92.0" layoutY="338.0" prefHeight="26.0" prefWidth="200.0" promptText="Location" />
    </children>
