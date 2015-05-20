@@ -35,18 +35,24 @@ public class DayViewController extends MainWindowController implements Initializ
     ObservableList<String> list;
     NewActivityController nac;
     private Connect connect;
+    private String username;
     
+    @FXML
+    private ListView listView;
     @FXML
     Button newActivityButton = new Button();
     
     public void changeWindow() throws IOException {
+        stage = (Stage) newActivityButton.getScene().getWindow();
+            stage.close();
+        
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NewActivity.fxml"));
         Parent root = (Parent) fxmlLoader.load();
         nac = fxmlLoader.<NewActivityController>getController();
         nac.setTheActiveDate(year, month, day);
-        //nac.setSD(getSavedData());
-        //controller.list.add(sd.getData(Integer.toString(year) + Integer.toString(month) + Integer.toString(day)));
-        
+        nac.setUsername(getUsername());
+        System.out.println("in change window:" + getUsername());
+
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
@@ -60,26 +66,11 @@ public class DayViewController extends MainWindowController implements Initializ
         this.day = day;
     }
     
-    public int getYear() {
-        return this.year;
-    }
-    
-    public int getMonth() {
-        return month;
-    }
-    
-    public int getDay() {
-        return day;
-    }
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         list = FXCollections.observableArrayList();
         listView.setItems(list);
         listView.setStyle("-fx-font-size:18");
-    }    
-
-    @FXML
-    private ListView listView;
+    }
     
 }

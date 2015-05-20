@@ -23,7 +23,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class MainWindowController implements Initializable {
-
+    public String username;
     private String hoverColor = "#6495ED";
     private Calendar calendar;
     private Pane[] panes = new Pane[43];
@@ -41,9 +41,14 @@ public class MainWindowController implements Initializable {
     public MainWindowController() {
         
     }
-
-    public SavedData getSavedData() {
-        return sd;
+    
+    public void setUsername(String username) {
+        this.username = username;
+        System.out.println("username is set to:" + this.username);
+    }
+    public String getUsername() {
+        System.out.println("returned username: " + username);
+        return username;
     }
 
     @FXML
@@ -52,6 +57,8 @@ public class MainWindowController implements Initializable {
         Parent root = (Parent) fxmlLoader.load();
         dvc = fxmlLoader.<DayViewController>getController();
         dvc.setTheActiveDate(year, month, day);
+        dvc.setUsername(getUsername());
+        
         try {
             System.out.println("DATUMET: " + Integer.toString(year) + Integer.toString(month) + Integer.toString(day));
             array = connect.getActivities("hassel", Integer.toString(year) + Integer.toString(month) + Integer.toString(day));
@@ -70,7 +77,7 @@ public class MainWindowController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //testSavedData();
-        //connect = new Connect();
+        connect = new Connect();
         calendar = Calendar.getInstance();
         fillPaneArray();
         fillLabelArray();
@@ -96,7 +103,6 @@ public class MainWindowController implements Initializable {
         }
         
     }
-    
 
     public void setup() {
         year = calendar.get(Calendar.YEAR);

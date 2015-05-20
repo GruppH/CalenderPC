@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.input.KeyEvent;
@@ -22,7 +23,7 @@ import javafx.scene.input.KeyEvent;
  *
  * @author calleskanshed
  */
-public class NewActivityController extends DayViewController implements Initializable {
+public class NewActivityController extends MainWindowController implements Initializable {
 
     /**
      * Initializes the controller class.
@@ -33,7 +34,8 @@ public class NewActivityController extends DayViewController implements Initiali
     private int day;
     private SavedData sd;
     private DayViewController dvc;
-
+    private Connect connect;
+    private String username;
 
     public void setTheActiveDate(int year, int month, int day) {
         this.year = year;
@@ -41,13 +43,7 @@ public class NewActivityController extends DayViewController implements Initiali
         this.day = day;
         System.out.println("YEAR: " + year + " MONTH: " + month + " DAY: " + day);
     }
-
-    public void setSD(SavedData sd) {
-        this.sd = sd;
-    }
-
     
-
     public void addActivity() {
 
         
@@ -55,7 +51,13 @@ public class NewActivityController extends DayViewController implements Initiali
             
             //Goto next step
             System.out.println("RIGHT");
+            connect.newActivity(getUsername(), activityTextField.getText(), 
+                    notesTextArea.getText(), startH.getText(), endH.getText(), 
+                    locationTextField.getText(), Integer.toString(year) + 
+                            Integer.toString(month)+Integer.toString(day));
             
+            stage = (Stage) done.getScene().getWindow();
+            stage.close();
         }
         
         try {
@@ -106,6 +108,8 @@ public class NewActivityController extends DayViewController implements Initiali
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         errorLabel.setVisible(false);
+        connect = new Connect();
+        System.out.println("username::: " + getUsername());
     }
       
     
@@ -121,5 +125,11 @@ public class NewActivityController extends DayViewController implements Initiali
     private TextField endMin;
     @FXML
     private Label errorLabel;
+    @FXML
+    private TextField activityTextField;
+    @FXML
+    private TextArea notesTextArea;
+    @FXML
+    private TextField locationTextField;
 
 }

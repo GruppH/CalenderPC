@@ -15,59 +15,71 @@ import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-
-public class LoginController implements Initializable {
+public class LoginController extends MainWindowController implements Initializable {
 
     private Connect connect;
     private Stage stage;
+    private String username;
+    private MainWindowController mwc;
     
     @FXML
     private Button signInButton;
-    
+
     @FXML
     private Button newUserButton;
-    
+
     @FXML
     private TextField nameField;
-    
+
     @FXML
     private TextField passwordField;
-    
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         connect = new Connect();
-    }    
-    
+    }
+
     public void signIn() {
         try {
             System.out.println("name: " + nameField.getCharacters());
-        System.out.println("pass: " + passwordField.getText());
-            if(connect.executeQuery("select password from user where Username='" 
+            System.out.println("pass: " + passwordField.getText());
+            if (connect.executeQuery("select password from user where Username='"
                     + nameField.getText() + "'", "password").contentEquals(
                             passwordField.getText())) {
+                setUsername(nameField.getText());
                 changeWindow();
-            } 
-        } catch(Exception ex){
-            
+            }
+        } catch (Exception ex) {
+
         }
-        
+
     }
-    
+
     public void changeWindow() throws IOException {
         stage = (Stage) signInButton.getScene().getWindow();
         stage.close();
+        /*
         stage = new Stage();
         AnchorPane root = FXMLLoader.load(Main.class.getResource("MainWindow.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        */
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainWindow.fxml"));
+        Parent root = (Parent) fxmlLoader.load();
+        mwc = fxmlLoader.<MainWindowController>getController();
+        mwc.setUsername(getUsername());
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
     }
-    
+
 }
