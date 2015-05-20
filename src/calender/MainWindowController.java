@@ -70,13 +70,33 @@ public class MainWindowController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //testSavedData();
-        connect = new Connect();
+        //connect = new Connect();
         calendar = Calendar.getInstance();
         fillPaneArray();
         fillLabelArray();
         setup();
         updateLabels(month, year);
+        getCurrentDay();
     }
+    
+    public void getCurrentDay(){
+        int today = calendar.get(Calendar.DAY_OF_MONTH);
+        
+        for (int i = 1; i < labels.length; i++) {
+            
+            String labelText = labels[i].getText();
+            
+            if (!labelText.equals("")){
+                int labelInt = Integer.parseInt(labelText);
+                if (labelInt == today){
+                    labels[i].setStyle("-fx-text-fill: orangered    ");
+                }                
+            }
+            
+        }
+        
+    }
+    
 
     public void setup() {
         year = calendar.get(Calendar.YEAR);
@@ -128,9 +148,17 @@ public class MainWindowController implements Initializable {
         int numberOfDays = getDaysInMonth(month, year);
         int days = 1;
         int daysNextMonth = 1;
+        //This is for getting previous month days
+        int daysInPreviousMonth;
+        if (month > 1){
+            daysInPreviousMonth = getDaysInMonth(month-1, year);
+        } else {
+            daysInPreviousMonth = 31;
+        }
+        System.out.println(daysInPreviousMonth);
         for (int i = 1; i < labels.length; i++) {
             if (i < firstDay) {
-                labels[i].setText("");
+                labels[i].setText(String.valueOf(daysInPreviousMonth-(firstDay-i-1)));
                 panes[i].setDisable(true);
                 panes[i].setStyle("-fx-background-color: grey");
             } else if (days > numberOfDays) {
