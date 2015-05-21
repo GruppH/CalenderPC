@@ -54,13 +54,17 @@ public class DayViewController extends MainWindowController implements Initializ
                 //System.out.println("ListView selection changed from oldValue = "
                 //      + oldValue + " to newValue = " + newValue);
                 selectedItem = newValue;
+                activity = connect.getActivity(getUsername(),
+                                Integer.toString(year)
+                                + Integer.toString(month)
+                                + Integer.toString(day),
+                                selectedItem.substring(0, 2));
                 //System.out.println("selectedItem: " + selectedItem);
                 //String substring = selectedItem.substring(0, 2);
                 //System.out.println("substring: " + substring);
                 //activity = connect.getActivity(getUsername(), Integer.toString(year) + Integer.toString(month) + Integer.toString(day), substring);
-
-                Collections.replaceAll(list, selectedItem, activity
-                        = connect.getActivity(getUsername(),
+                String value = selectedItem + activity;
+                Collections.replaceAll(list, selectedItem, connect.getActivity(getUsername(),
                                 Integer.toString(year)
                                 + Integer.toString(month)
                                 + Integer.toString(day),

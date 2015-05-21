@@ -116,31 +116,36 @@ public class Connect {
 
     public String getActivity(String username, String dateToReceive, String startTime) {
 
-
         try {
             statement = connection.createStatement();
             resultSet = statement.executeQuery("select * from calendar where username='" + username + "' and date='" + dateToReceive + "' and begins='" + startTime + "'");
 
+            activity = "";
+            begins = "";
+            ends = "";
+            notes = "";
+            location = "";
+            
             while (resultSet.next()) {
                 activity = resultSet.getString("activity");
                 begins = resultSet.getString("begins");
                 ends = resultSet.getString("ends");
-                
+
                 notes = resultSet.getString("notes");
                 //System.out.println("notes: " + notes);
                 location = resultSet.getString("location");
                 //System.out.println("location: " + location);
             }
-            return begins + "   " + activity + "\r\n" + "Ends: " + ends + "\r\n" + "Notes: " + notes + "\r\n" + "Location: " + location;
+            if(begins != null) {
+                return begins + "   " + activity + "\r\n" + "Ends: " + ends + "\r\n" + "Notes: " + notes + "\r\n" + "Location: " + location;
+            }
+            
+            
 
         } catch (SQLException ex) {
             Logger.getLogger(Connect.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //if (ends != null) {
-        //return "Ends:" + ends + "\r\n" + "Notes: " + notes + "\r\n" + "Location: " + location;
-
         return "";
-
     }
 
 }
