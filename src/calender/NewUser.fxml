@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="198.0" prefWidth="292.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calender.NewUserController">
+   <children>
+      <Button fx:id="createButton" layoutX="116.0" layoutY="126.0" mnemonicParsing="false" onAction="#create" text="Create" />
+      <TextField fx:id="passwordFieldOne" layoutX="64.0" layoutY="83.0" promptText="Password" />
+      <TextField fx:id="usernameField" layoutX="64.0" layoutY="43.0" promptText="Username" />
+   </children>
+</AnchorPane>

@@ -45,33 +45,33 @@ public class DayViewController extends MainWindowController implements Initializ
     private ListView listView;
     @FXML
     Button newActivityButton = new Button();
+    @FXML
+    private Button removeButton;
     private String activity;
 
     public void getSelectedItem() {
         listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                //System.out.println("ListView selection changed from oldValue = "
-                //      + oldValue + " to newValue = " + newValue);
                 selectedItem = newValue;
-                activity = connect.getActivity(getUsername(),
-                                Integer.toString(year)
-                                + Integer.toString(month)
-                                + Integer.toString(day),
-                                selectedItem.substring(0, 2));
-                //System.out.println("selectedItem: " + selectedItem);
-                //String substring = selectedItem.substring(0, 2);
-                //System.out.println("substring: " + substring);
-                //activity = connect.getActivity(getUsername(), Integer.toString(year) + Integer.toString(month) + Integer.toString(day), substring);
                 String value = selectedItem + activity;
-                Collections.replaceAll(list, selectedItem, connect.getActivity(getUsername(),
-                                Integer.toString(year)
-                                + Integer.toString(month)
-                                + Integer.toString(day),
-                                selectedItem.substring(0, 2)));
 
+                Collections.replaceAll(list, selectedItem, connect.getActivity(getUsername(),
+                        Integer.toString(year)
+                        + Integer.toString(month)
+                        + Integer.toString(day),
+                        selectedItem.substring(0, 2)));
             }
         });
+    }
+    
+    public void removeActivity() {
+        connect.removeActivity(getUsername(), Integer.toString(year)
+                        + Integer.toString(month)
+                        + Integer.toString(day), selectedItem.substring(0, 2));
+        Collections.replaceAll(list, selectedItem, selectedItem.substring(0, 2));
+        stage = (Stage) removeButton.getScene().getWindow();
+        stage.close();
     }
 
     public void changeWindow() throws IOException {

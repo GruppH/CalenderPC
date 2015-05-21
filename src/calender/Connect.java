@@ -136,16 +136,34 @@ public class Connect {
                 location = resultSet.getString("location");
                 //System.out.println("location: " + location);
             }
-            if(begins != null) {
-                return begins + "   " + activity + "\r\n" + "Ends: " + ends + "\r\n" + "Notes: " + notes + "\r\n" + "Location: " + location;
-            }
             
-            
+                System.out.println("activity exists");
+                return startTime + "   " + activity + "\r\n" + "Ends: " + ends + "\r\n" + "Notes: " + notes + "\r\n" + "Location: " + location;
 
         } catch (SQLException ex) {
             Logger.getLogger(Connect.class.getName()).log(Level.SEVERE, null, ex);
         }
         return "";
+    }
+    
+    public void removeActivity(String username, String date, String begins) {
+        try {
+            statement = connection.createStatement();
+            statement.executeUpdate("delete from calendar where username='" + username + "' and date='" + date + "' and begins='" + begins + "'");
+        } catch (SQLException ex) {
+
+        }
+    }
+    
+    public void newUser(String username, String password) {
+        try {
+            statement = connection.createStatement();
+            statement.executeUpdate(
+                    "INSERT INTO user (Username, password)"
+                    + "VALUES ('" + username + "','" + password + "');");
+        } catch (SQLException ex) {
+            System.out.println("no user added");
+        }
     }
 
 }

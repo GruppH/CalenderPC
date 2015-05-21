@@ -28,6 +28,7 @@ public class LoginController extends MainWindowController implements Initializab
     private Stage stage;
     private String username;
     private MainWindowController mwc;
+    private NewUserController nuc;
     
     @FXML
     private Button signInButton;
@@ -60,6 +61,17 @@ public class LoginController extends MainWindowController implements Initializab
 
         }
 
+    }
+    
+    public void newUser() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NewUser.fxml"));
+        Parent root = (Parent) fxmlLoader.load();
+        nuc = fxmlLoader.<NewUserController>getController();
+        //nuc.setUsername(getUsername());
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void changeWindow() throws IOException {
