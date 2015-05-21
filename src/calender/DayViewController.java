@@ -46,22 +46,25 @@ public class DayViewController extends MainWindowController implements Initializ
     @FXML
     Button newActivityButton = new Button();
     private String activity;
-    
+
     public void getSelectedItem() {
         listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 //System.out.println("ListView selection changed from oldValue = "
-                  //      + oldValue + " to newValue = " + newValue);
+                //      + oldValue + " to newValue = " + newValue);
                 selectedItem = newValue;
                 //System.out.println("selectedItem: " + selectedItem);
-                String substring = selectedItem.substring(0,2);
-                System.out.println("substring: " + substring);
-                activity = connect.getActivity(getUsername(), Integer.toString(year) + Integer.toString(month) + Integer.toString(day), substring);
-                System.out.println("" + activity);
-                String a = "hejhejhej";
-                Collections.replaceAll(list, selectedItem, a);
+                //String substring = selectedItem.substring(0, 2);
+                //System.out.println("substring: " + substring);
+                //activity = connect.getActivity(getUsername(), Integer.toString(year) + Integer.toString(month) + Integer.toString(day), substring);
 
+                Collections.replaceAll(list, selectedItem, activity
+                        = connect.getActivity(getUsername(),
+                                Integer.toString(year)
+                                + Integer.toString(month)
+                                + Integer.toString(day),
+                                selectedItem.substring(0, 2)));
 
             }
         });

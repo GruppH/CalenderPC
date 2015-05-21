@@ -44,10 +44,9 @@ public class MainWindowController implements Initializable {
     
     public void setUsername(String username) {
         this.username = username;
-        System.out.println("username is set to:" + this.username);
     }
+    
     public String getUsername() {
-        System.out.println("returned username: " + username);
         return username;
     }
 
@@ -60,8 +59,7 @@ public class MainWindowController implements Initializable {
         dvc.setUsername(getUsername());
         
         try {
-            System.out.println("DATUMET: " + Integer.toString(year) + Integer.toString(month) + Integer.toString(day));
-            array = connect.getActivities("hassel", Integer.toString(year) + Integer.toString(month) + Integer.toString(day));
+            array = connect.getActivities(getUsername(), Integer.toString(year) + Integer.toString(month) + Integer.toString(day));
             for(int i=0; i<array.length; i++) {
                 dvc.list.add(array[i]);
             }
