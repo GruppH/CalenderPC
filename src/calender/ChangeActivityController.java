@@ -32,7 +32,6 @@ public class ChangeActivityController extends MainWindowController implements In
     private int year;
     private int month;
     private int day;
-    private SavedData sd;
     private DayViewController dvc;
     private Connect connect;
     private String username;

@@ -33,7 +33,6 @@ public class MainWindowController implements Initializable {
     private int day;
     private int weekday;
     private DayViewController dvc;
-    private SavedData sd = new SavedData();
     private Connect connect;
     ObservableList<String> list;
     private String[] array;

@@ -162,6 +162,7 @@ public class Connect {
     }
 
     public String getActivity(String username, String dateToReceive, String startTime) {
+        String returner = "";
         try {
             statement = connection.createStatement();
             resultSet = statement.executeQuery("select * from calendar where username='" + username + "' and date='" + dateToReceive + "' and begins='" + startTime + "'");
@@ -178,12 +179,23 @@ public class Connect {
             }
 
             System.out.println("activity exist");
-            return startTime + "   " + activity + "\r\n" + "Ends: " + ends + "\r\n" + "Notes: " + notes + "\r\n" + "Location: " + location;
+            if (activity != null) {
+                returner = startTime + "   " + activity + "\r\n" + "Ends: " + ends + "\r\n" + "Notes: " + notes + "\r\n" + "Location: " + location;
+            } else if (activity == null) {
+                returner = startTime;
+            }
+            activity = null;
+            begins = null;
+            notes = null;
+            ends = null;
+            date = null;
+            location = null;
+            id = 0;
 
         } catch (SQLException ex) {
             Logger.getLogger(Connect.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return "";
+        return returner;
     }
 
     public void removeActivity(String username, String date, String begins) {

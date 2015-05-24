@@ -73,14 +73,16 @@ public class DayViewController extends MainWindowController implements Initializ
         listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                System.out.println("OLDVALUE: " + oldValue + "\r\nNEWVALUE: " + newValue);
                 selectedItem = newValue;
-                String value = selectedItem + activity;
 
                 Collections.replaceAll(list, selectedItem, connect.getActivity(getUsername(),
                         Integer.toString(year)
                         + Integer.toString(month)
                         + Integer.toString(day),
                         selectedItem.substring(0, 2)));
+                oldValue=null;
+                newValue=null;
             }
         });
     }

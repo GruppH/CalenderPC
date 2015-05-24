@@ -32,7 +32,6 @@ public class NewActivityController extends MainWindowController implements Initi
     private int year;
     private int month;
     private int day;
-    private SavedData sd;
     private DayViewController dvc;
     private Connect connect;
     private String username;
