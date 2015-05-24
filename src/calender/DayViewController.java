@@ -38,6 +38,7 @@ public class DayViewController extends MainWindowController implements Initializ
     private Stage stage;
     ObservableList<String> list;
     NewActivityController nac;
+    ChangeActivityController cac;
     private Connect connect;
     private String username;
     String selectedItem = null;
@@ -47,7 +48,26 @@ public class DayViewController extends MainWindowController implements Initializ
     Button newActivityButton = new Button();
     @FXML
     private Button removeButton;
+    @FXML
+    private Button changeButton;
+    
     private String activity;
+    
+    public void changeActivity() throws IOException {
+        stage = (Stage) changeButton.getScene().getWindow();
+        stage.close();
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ChangeActivity.fxml"));
+        Parent root = (Parent) fxmlLoader.load();
+        cac = fxmlLoader.<ChangeActivityController>getController();
+        cac.setTheActiveDate(year, month, day);
+        cac.setUsername(getUsername());
+        cac.setLabels(selectedItem.substring(0, 2));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+    }
 
     public void getSelectedItem() {
         listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {

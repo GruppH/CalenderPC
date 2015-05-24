@@ -34,6 +34,7 @@ public class Connect {
     private String ends = null;
     private String date = null;
     private String location = null;
+    private int id = 0;
 
     public Connect() {
         databaseConnection();
@@ -49,6 +50,52 @@ public class Connect {
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
             Logger.getLogger(Connect.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public String getActivity() {
+        return activity;
+    }
+
+    public String getBegins() {
+        return begins;
+    }
+
+    public String getEnds() {
+        return ends;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public int getID() {
+        return id;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public int getNewID() {
+        int id = 0;
+        try {
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery("SELECT id FROM calendar ORDER BY id");
+
+            while (resultSet.next()) {
+                id = resultSet.getInt("id");
+                System.out.println(id);
+            }
+
+        } catch (SQLException ex) {
+
+        }
+
+        return id + 1;
     }
 
     public String executeQuery(String query, String column) {
@@ -101,8 +148,8 @@ public class Connect {
         try {
             statement = connection.createStatement();
             statement.executeUpdate(
-                    "INSERT INTO calendar (username,activity,notes,begins,ends,location,date)"
-                    + "VALUES ('" + username + "','" + activity + "','" + notes + "','"
+                    "INSERT INTO calendar (id, username,activity,notes,begins,ends,location,date)"
+                    + "VALUES (" + getNewID() + ",'" + username + "','" + activity + "','" + notes + "','"
                     + begins + "','" + ends + "','" + location + "',"
                     + date + ");");
         } catch (SQLException ex) {
@@ -115,37 +162,30 @@ public class Connect {
     }
 
     public String getActivity(String username, String dateToReceive, String startTime) {
-
         try {
             statement = connection.createStatement();
             resultSet = statement.executeQuery("select * from calendar where username='" + username + "' and date='" + dateToReceive + "' and begins='" + startTime + "'");
 
-            activity = "";
-            begins = "";
-            ends = "";
-            notes = "";
-            location = "";
-            
             while (resultSet.next()) {
                 activity = resultSet.getString("activity");
                 begins = resultSet.getString("begins");
                 ends = resultSet.getString("ends");
-
+                id = resultSet.getInt("id");
                 notes = resultSet.getString("notes");
                 //System.out.println("notes: " + notes);
                 location = resultSet.getString("location");
                 //System.out.println("location: " + location);
             }
-            
-                System.out.println("activity exists");
-                return startTime + "   " + activity + "\r\n" + "Ends: " + ends + "\r\n" + "Notes: " + notes + "\r\n" + "Location: " + location;
+
+            System.out.println("activity exist");
+            return startTime + "   " + activity + "\r\n" + "Ends: " + ends + "\r\n" + "Notes: " + notes + "\r\n" + "Location: " + location;
 
         } catch (SQLException ex) {
             Logger.getLogger(Connect.class.getName()).log(Level.SEVERE, null, ex);
         }
         return "";
     }
-    
+
     public void removeActivity(String username, String date, String begins) {
         try {
             statement = connection.createStatement();
@@ -154,7 +194,7 @@ public class Connect {
 
         }
     }
-    
+
     public void newUser(String username, String password) {
         try {
             statement = connection.createStatement();
@@ -163,6 +203,20 @@ public class Connect {
                     + "VALUES ('" + username + "','" + password + "');");
         } catch (SQLException ex) {
             System.out.println("no user added");
+        }
+    }
+
+    public void changeActivity(int id, String username, String activity, String notes, String begins, String ends, String location, String date) {
+        try {
+            statement = connection.createStatement();
+            statement.executeUpdate(
+                    "update calendar set username='" + username
+                    + "',activity='" + activity + "',notes='" + notes
+                    + "',begins='" + begins + "',ends='" + ends
+                    + "',location='" + location + "',date='" + date
+                    + "' where id='" + id + "'");
+        } catch (SQLException ex) {
+            System.out.println("activity not changed");
         }
     }
 
