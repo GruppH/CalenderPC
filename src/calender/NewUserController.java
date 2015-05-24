@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -38,11 +39,16 @@ public class NewUserController extends MainWindowController implements Initializ
 
     @FXML
     private Button createButton;
+    
+    @FXML
+    private Label noMatchLabel;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        noMatchLabel.setVisible(false);
         connect = new Connect();
+        
     }
 
     public void create() {
@@ -52,6 +58,7 @@ public class NewUserController extends MainWindowController implements Initializ
             stage.close();
         } else {
             //PASSWORDS DOES NOT MATCH
+            noMatchLabel.setVisible(true);
             System.out.println("PASSWORDS DOES NOT MATCH");
         }
 
