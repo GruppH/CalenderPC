@@ -23,6 +23,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class MainWindowController implements Initializable {
+
     public String username;
     private String hoverColor = "#6495ED";
     private Calendar calendar;
@@ -36,15 +37,15 @@ public class MainWindowController implements Initializable {
     private Connect connect;
     ObservableList<String> list;
     private String[] array;
-    
+
     public MainWindowController() {
-        
+
     }
-    
+
     public void setUsername(String username) {
         this.username = username;
     }
-    
+
     public String getUsername() {
         return username;
     }
@@ -56,14 +57,14 @@ public class MainWindowController implements Initializable {
         dvc = fxmlLoader.<DayViewController>getController();
         dvc.setTheActiveDate(year, month, day);
         dvc.setUsername(getUsername());
-        
+
         try {
             array = connect.getActivities(getUsername(), Integer.toString(year) + Integer.toString(month) + Integer.toString(day));
-            for(int i=0; i<array.length; i++) {
+            for (int i = 0; i < array.length; i++) {
                 dvc.list.add(array[i]);
             }
-        } catch(Exception ex) {
-            
+        } catch (Exception ex) {
+
         }
         Scene scene = new Scene(root);
         Stage stage = new Stage();
@@ -82,23 +83,32 @@ public class MainWindowController implements Initializable {
         updateLabels(month, year);
         getCurrentDay();
     }
-    
-    public void getCurrentDay(){
-        int today = calendar.get(Calendar.DAY_OF_MONTH);
-        
-        for (int i = 1; i < labels.length; i++) {
-            
-            String labelText = labels[i].getText();
-            
-            if (!labelText.equals("")){
-                int labelInt = Integer.parseInt(labelText);
-                if (labelInt == today){
-                    labels[i].setStyle("-fx-text-fill: orangered    ");
-                }                
+
+    public void getCurrentDay() {
+
+        if (calendar.get(Calendar.MONTH) + 1 == month) {
+            System.out.println("aa");
+            int today = calendar.get(Calendar.DAY_OF_MONTH);
+
+            for (int i = 1; i < labels.length; i++) {
+
+                String labelText = labels[i].getText();
+
+                if (!labelText.equals("")) {
+                    int labelInt = Integer.parseInt(labelText);
+                    if (labelInt == today) {
+                        labels[i].setStyle("-fx-text-fill: red    ");
+                    }
+                }
+
             }
-            
         }
-        
+    }
+
+    public void resetLabels() {
+        for (int i = 1; i < labels.length; i++) {
+            labels[i].setStyle("-fx-text-fill: black    ");
+        }
     }
 
     public void setup() {
@@ -144,6 +154,7 @@ public class MainWindowController implements Initializable {
             month--;
             updateLabels(month, year);
         }
+        
     }
 
     public void updateLabels(int month, int year) {
@@ -153,15 +164,15 @@ public class MainWindowController implements Initializable {
         int daysNextMonth = 1;
         //This is for getting previous month days
         int daysInPreviousMonth;
-        if (month > 1){
-            daysInPreviousMonth = getDaysInMonth(month-1, year);
+        if (month > 1) {
+            daysInPreviousMonth = getDaysInMonth(month - 1, year);
         } else {
             daysInPreviousMonth = 31;
         }
         System.out.println(daysInPreviousMonth);
         for (int i = 1; i < labels.length; i++) {
             if (i < firstDay) {
-                labels[i].setText(String.valueOf(daysInPreviousMonth-(firstDay-i-1)));
+                labels[i].setText(String.valueOf(daysInPreviousMonth - (firstDay - i - 1)));
                 panes[i].setDisable(true);
                 panes[i].setStyle("-fx-background-color: grey");
             } else if (days > numberOfDays) {
@@ -176,6 +187,7 @@ public class MainWindowController implements Initializable {
         }
         monthLabel(month);
         yearLabel.setText(String.valueOf(year));
+        getCurrentDay();
     }
 
     public void resetCalender() {
@@ -183,6 +195,7 @@ public class MainWindowController implements Initializable {
             panes[i].setDisable(false);
             panes[i].setStyle("-fx-background-color: white");
         }
+        resetLabels();
     }
 
     public int getFirstWeekdayInMonth(int month, int year) {
