@@ -9,6 +9,9 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -82,25 +85,48 @@ public class MainWindowController implements Initializable {
         setup();
         resetCalender();
         updateLabels(month, year);
-        getCurrentDay();
+
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(100);
+                    updateLabels(month, year);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(MainWindowController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+
     }
 
-    public void daysWithActivity(int[] days) {
+    public void daysWithActivity(ArrayList<Integer> days) {
+        days = sortOutList(days);
         int dayToStart = getFirstWeekdayInMonth(month, year);
-        for (int i = 0; i < days.length; i++) {
-            
+        for (int i = 0; i < days.size(); i++) {
+
             int lastDayToCheck = getDaysInMonth(month, year);
-            
+
             for (int j = 0; j < labels.length; j++) {
                 if (j >= dayToStart && lastDayToCheck > 0) {
                     int label = Integer.parseInt(labels[j].getText());
-                    if (label == days[i]) {
+                    if (label == days.get(i)) {
                         labels[j].setStyle(("-fx-text-fill: chartreuse  "));
                     }
                     lastDayToCheck--;
                 }
             }
         }
+    }
+
+    public ArrayList<Integer> sortOutList(ArrayList<Integer> list) {
+        ArrayList<Integer> days = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            if (Integer.parseInt(list.get(i).toString().substring(4, 5)) == month) {
+                days.add(Integer.parseInt(list.get(i).toString().substring(5)));
+            }
+        }
+        return days;
     }
 
     public void getCurrentDay() {
@@ -176,20 +202,17 @@ public class MainWindowController implements Initializable {
     }
 
     public void updateLabels(int month, int year) {
-
-        //daysWithActivity(new int[] {5,4});
         int firstDay = getFirstWeekdayInMonth(month, year);
         int numberOfDays = getDaysInMonth(month, year);
         int days = 1;
         int daysNextMonth = 1;
-        //This is for getting previous month days
         int daysInPreviousMonth;
         if (month > 1) {
             daysInPreviousMonth = getDaysInMonth(month - 1, year);
         } else {
             daysInPreviousMonth = 31;
         }
-        System.out.println(daysInPreviousMonth);
+
         for (int i = 1; i < labels.length; i++) {
             if (i < firstDay) {
                 labels[i].setText(String.valueOf(daysInPreviousMonth - (firstDay - i - 1)));
@@ -208,11 +231,9 @@ public class MainWindowController implements Initializable {
         monthLabel(month);
         yearLabel.setText(String.valueOf(year));
         getCurrentDay();
-        
-        //Example of displaying days with activity
-        //   daysWithActivity(new int[]{1, 3, 5, 24 , 31});
-    
-    
+
+        daysWithActivity(connect.getActivityDates(username));
+        System.out.println(username);
     }
 
     public void resetCalender() {
