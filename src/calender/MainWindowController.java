@@ -80,14 +80,32 @@ public class MainWindowController implements Initializable {
         fillPaneArray();
         fillLabelArray();
         setup();
+        resetCalender();
         updateLabels(month, year);
         getCurrentDay();
+    }
+
+    public void daysWithActivity(int[] days) {
+        int dayToStart = getFirstWeekdayInMonth(month, year);
+        for (int i = 0; i < days.length; i++) {
+            
+            int lastDayToCheck = getDaysInMonth(month, year);
+            
+            for (int j = 0; j < labels.length; j++) {
+                if (j >= dayToStart && lastDayToCheck > 0) {
+                    int label = Integer.parseInt(labels[j].getText());
+                    if (label == days[i]) {
+                        labels[j].setStyle(("-fx-text-fill: chartreuse  "));
+                    }
+                    lastDayToCheck--;
+                }
+            }
+        }
     }
 
     public void getCurrentDay() {
 
         if (calendar.get(Calendar.MONTH) + 1 == month) {
-            System.out.println("aa");
             int today = calendar.get(Calendar.DAY_OF_MONTH);
 
             for (int i = 1; i < labels.length; i++) {
@@ -154,10 +172,12 @@ public class MainWindowController implements Initializable {
             month--;
             updateLabels(month, year);
         }
-        
+
     }
 
     public void updateLabels(int month, int year) {
+
+        //daysWithActivity(new int[] {5,4});
         int firstDay = getFirstWeekdayInMonth(month, year);
         int numberOfDays = getDaysInMonth(month, year);
         int days = 1;
@@ -188,6 +208,11 @@ public class MainWindowController implements Initializable {
         monthLabel(month);
         yearLabel.setText(String.valueOf(year));
         getCurrentDay();
+        
+        //Example of displaying days with activity
+        //   daysWithActivity(new int[]{1, 3, 5, 24 , 31});
+    
+    
     }
 
     public void resetCalender() {
