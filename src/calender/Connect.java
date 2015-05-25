@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.control.ListView;
@@ -50,6 +51,25 @@ public class Connect {
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
             Logger.getLogger(Connect.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public ArrayList<Integer> getActivityDates(String username) {
+        ArrayList<Integer> dates = new ArrayList<Integer>();
+
+        try {
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery("SELECT date FROM calendar where username='" + username + "' ORDER BY date");
+
+            while (resultSet.next()) {
+                dates.add(resultSet.getInt("date"));
+            }
+            
+        } catch (SQLException ex) {
+
+        }
+        
+        
+        return dates;
     }
 
     public String getActivity() {
