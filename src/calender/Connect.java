@@ -37,6 +37,14 @@ public class Connect {
     private String location = null;
     private int id = 0;
 
+    private String activityC = null;
+    private String beginsC = null;
+    private String notesC = null;
+    private String endsC = null;
+    private String dateC = null;
+    private String locationC = null;
+    private int idC = 0;
+
     public Connect() {
         databaseConnection();
     }
@@ -52,7 +60,7 @@ public class Connect {
             Logger.getLogger(Connect.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public ArrayList<Integer> getActivityDates(String username) {
         ArrayList<Integer> dates = new ArrayList<Integer>();
 
@@ -63,41 +71,40 @@ public class Connect {
             while (resultSet.next()) {
                 dates.add(resultSet.getInt("date"));
             }
-            
+
         } catch (SQLException ex) {
 
         }
-        
-        
+
         return dates;
     }
 
-    public String getActivity() {
-        return activity;
+    public String getActivityName() {
+        return activityC;
     }
 
     public String getBegins() {
-        return begins;
+        return beginsC;
     }
 
     public String getEnds() {
-        return ends;
+        return endsC;
     }
 
     public String getDate() {
-        return date;
+        return dateC;
     }
 
     public String getLocation() {
-        return location;
+        return locationC;
     }
 
     public int getID() {
-        return id;
+        return idC;
     }
 
     public String getNotes() {
-        return notes;
+        return notesC;
     }
 
     public int getNewID() {
@@ -181,6 +188,24 @@ public class Connect {
         return "hej";
     }
 
+    public void changeActivity(String username, String dateToReceive, String startTime) throws SQLException {
+        try {
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery("select * from calendar where username='" + username + "' and date='" + dateToReceive + "' and begins='" + startTime + "'");
+
+            while (resultSet.next()) {
+                activityC = resultSet.getString("activity");
+                beginsC = resultSet.getString("begins");
+                endsC = resultSet.getString("ends");
+                idC = resultSet.getInt("id");
+                notesC = resultSet.getString("notes");
+                locationC = resultSet.getString("location");
+            }
+        } catch (SQLException ex) {
+
+        }
+    }
+
     public String getActivity(String username, String dateToReceive, String startTime) {
         String returner = "";
         try {
@@ -235,6 +260,27 @@ public class Connect {
                     + "VALUES ('" + username + "','" + password + "');");
         } catch (SQLException ex) {
             System.out.println("no user added");
+        }
+    }
+
+    public boolean checkIfUserExist(String userName) {
+        String user = null;
+        try {
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery("select Username from user where userName='" + userName + "'");
+
+            while (resultSet.next()) {
+                user = resultSet.getString("Username");
+                System.out.println("user: " + user);
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("no username exist");
+        }
+        if(user == null) {
+            return true;
+        } else {
+            return false;
         }
     }
 

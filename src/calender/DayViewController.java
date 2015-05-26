@@ -7,6 +7,7 @@ package calender;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.Collections;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
@@ -53,15 +54,17 @@ public class DayViewController extends MainWindowController implements Initializ
     
     private String activity;
     
-    public void changeActivity() throws IOException {
+    public void changeActivity() throws IOException, SQLException {
         stage = (Stage) changeButton.getScene().getWindow();
         stage.close();
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ChangeActivity.fxml"));
         Parent root = (Parent) fxmlLoader.load();
         cac = fxmlLoader.<ChangeActivityController>getController();
-        cac.setTheActiveDate(year, month, day);
         cac.setUsername(getUsername());
+        cac.setTheActiveDate(year, month, day);
+        System.out.println("username i dayvbiew: " + getUsername());
+        //cac.setUsername(getUsername());
         cac.setLabels(selectedItem.substring(0, 2));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
