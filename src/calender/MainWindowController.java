@@ -111,7 +111,7 @@ public class MainWindowController implements Initializable {
                 if (j >= dayToStart && lastDayToCheck > 0) {
                     int label = Integer.parseInt(labels[j].getText());
                     if (label == days.get(i)) {
-                        labels[j].setStyle(("-fx-text-fill: chartreuse  "));
+                        labels[j].setStyle(("-fx-text-fill: blue  "));
                     }
                     lastDayToCheck--;
                 }
@@ -122,7 +122,8 @@ public class MainWindowController implements Initializable {
     public ArrayList<Integer> sortOutList(ArrayList<Integer> list) {
         ArrayList<Integer> days = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
-            if (Integer.parseInt(list.get(i).toString().substring(4, 5)) == month) {
+            if (Integer.parseInt(list.get(i).toString().substring(4, 5)) == month && 
+                    Integer.parseInt(list.get(i).toString().substring(0, 4)) == year) {
                 days.add(Integer.parseInt(list.get(i).toString().substring(5)));
             }
         }
