@@ -140,7 +140,7 @@ public class MainWindowController implements Initializable {
 
                 String labelText = labels[i].getText();
 
-                if (!labelText.equals("") && i >= today) {
+                if (!labelText.equals("") && i >= dayToStart) {
                     int labelInt = Integer.parseInt(labelText);
                     if (labelInt == today) {
                         labels[i].setStyle("-fx-text-fill: red ");
