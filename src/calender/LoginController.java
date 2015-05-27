@@ -66,7 +66,9 @@ public class LoginController extends MainWindowController implements Initializab
     
     public void newUser() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NewUser.fxml"));
+        
         Parent root = (Parent) fxmlLoader.load();
+        root.setStyle("-fx-background-image: url('calendar.jpg')"); 
         nuc = fxmlLoader.<NewUserController>getController();
         //nuc.setUsername(getUsername());
         Scene scene = new Scene(root);

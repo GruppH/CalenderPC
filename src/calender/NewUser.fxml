@@ -12,7 +12,7 @@
       <TextField fx:id="usernameField" layoutX="64.0" layoutY="43.0" promptText="Username" />
       <PasswordField fx:id="passwordFieldTwo" layoutX="64.0" layoutY="125.0" promptText="Password" />
       <PasswordField fx:id="passwordFieldOne" layoutX="64.0" layoutY="85.0" promptText="Password" />
-      <Label fx:id="noMatchLabel" layoutX="68.0" layoutY="14.0" text="Passwords does not match" />
+      <Label fx:id="noMatchLabel" layoutX="67.0" layoutY="6.0" text="Passwords do not match" />
       <Label fx:id="userNameExist" layoutX="75.0" layoutY="23.0" text="Username already exists" />
    </children>
 </AnchorPane>

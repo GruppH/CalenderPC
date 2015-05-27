@@ -34,6 +34,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        root.setStyle("-fx-background-image: url('calendar.jpg')"); 
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
