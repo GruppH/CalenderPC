@@ -132,20 +132,20 @@ public class MainWindowController implements Initializable {
 
     public void getCurrentDay() {
 
-        if (calendar.get(Calendar.MONTH) + 1 == month) {
+        if (calendar.get(Calendar.MONTH) + 1 == month && calendar.get(Calendar.YEAR) == year) {
+            int dayToStart = getFirstWeekdayInMonth(month, year);
             int today = calendar.get(Calendar.DAY_OF_MONTH);
-
+            
             for (int i = 1; i < labels.length; i++) {
 
                 String labelText = labels[i].getText();
 
-                if (!labelText.equals("")) {
+                if (!labelText.equals("") && i >= today) {
                     int labelInt = Integer.parseInt(labelText);
                     if (labelInt == today) {
-                        labels[i].setStyle("-fx-text-fill: red    ");
+                        labels[i].setStyle("-fx-text-fill: red ");
                     }
                 }
-
             }
         }
     }
