@@ -26,7 +26,7 @@ public class Connect {
     private Statement statement;
     private ResultSet resultSet;
     private String latestActivity;
-    ListView listView;
+    private ListView listView;
 
     private String userName = null;
     private String activity = null;
@@ -71,11 +71,9 @@ public class Connect {
             while (resultSet.next()) {
                 dates.add(resultSet.getInt("date"));
             }
-
         } catch (SQLException ex) {
 
         }
-
         return dates;
     }
 
@@ -117,11 +115,9 @@ public class Connect {
                 id = resultSet.getInt("id");
                 System.out.println(id);
             }
-
         } catch (SQLException ex) {
 
         }
-
         return id + 1;
     }
 
@@ -218,9 +214,7 @@ public class Connect {
                 ends = resultSet.getString("ends");
                 id = resultSet.getInt("id");
                 notes = resultSet.getString("notes");
-                //System.out.println("notes: " + notes);
                 location = resultSet.getString("location");
-                //System.out.println("location: " + location);
             }
 
             System.out.println("activity exist");
