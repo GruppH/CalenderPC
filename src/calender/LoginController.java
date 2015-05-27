@@ -5,13 +5,9 @@
  */
 package calender;
 
-import calender.Main;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,7 +16,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class LoginController extends MainWindowController implements Initializable {
@@ -30,16 +25,12 @@ public class LoginController extends MainWindowController implements Initializab
     private String username;
     private MainWindowController mwc;
     private NewUserController nuc;
-    
     @FXML
     private Button signInButton;
-
     @FXML
     private Button newUserButton;
-
     @FXML
     private TextField nameField;
-
     @FXML
     private PasswordField passwordField;
 
@@ -50,8 +41,6 @@ public class LoginController extends MainWindowController implements Initializab
 
     public void signIn() {
         try {
-            System.out.println("name: " + nameField.getCharacters());
-            System.out.println("pass: " + passwordField.getText());
             if (connect.executeQuery("select password from user where Username='"
                     + nameField.getText() + "'", "password").contentEquals(
                             passwordField.getText())) {
@@ -61,16 +50,13 @@ public class LoginController extends MainWindowController implements Initializab
         } catch (Exception ex) {
 
         }
-
     }
-    
+
     public void newUser() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NewUser.fxml"));
-        
         Parent root = (Parent) fxmlLoader.load();
-        root.setStyle("-fx-background-image: url('calendar.jpg')"); 
+        root.setStyle("-fx-background-image: url('calendar.jpg')");
         nuc = fxmlLoader.<NewUserController>getController();
-        //nuc.setUsername(getUsername());
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
@@ -80,13 +66,6 @@ public class LoginController extends MainWindowController implements Initializab
     public void changeWindow() throws IOException {
         stage = (Stage) signInButton.getScene().getWindow();
         stage.close();
-        /*
-        stage = new Stage();
-        AnchorPane root = FXMLLoader.load(Main.class.getResource("MainWindow.fxml"));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        */
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainWindow.fxml"));
         Parent root = (Parent) fxmlLoader.load();
         mwc = fxmlLoader.<MainWindowController>getController();
