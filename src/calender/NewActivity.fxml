@@ -10,10 +10,8 @@
 <AnchorPane id="AnchorPane" prefHeight="446.0" prefWidth="376.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calender.NewActivityController">
    <children>
       <Button fx:id="done" layoutX="167.0" layoutY="375.0" mnemonicParsing="false" onAction="#addActivity" text="Done" />
-      <TextField fx:id="startH" alignment="CENTER_RIGHT" layoutX="90.0" layoutY="126.0" onKeyTyped="#resetLabel" prefHeight="25.0" prefWidth="36.0" promptText="h" />
-      <TextField fx:id="startMin" alignment="CENTER_RIGHT" layoutX="135.0" layoutY="126.0" onKeyTyped="#resetLabel" prefHeight="25.0" prefWidth="39.0" promptText="mm" />
-      <TextField fx:id="endH" alignment="CENTER_RIGHT" layoutX="210.0" layoutY="126.0" onKeyTyped="#resetLabel" prefHeight="25.0" prefWidth="36.0" promptText="h" />
-      <TextField fx:id="endMin" alignment="CENTER_RIGHT" layoutX="254.0" layoutY="126.0" onKeyTyped="#resetLabel" prefHeight="25.0" prefWidth="39.0" promptText="mm" />
+      <TextField fx:id="startH" alignment="CENTER_RIGHT" layoutX="118.0" layoutY="126.0" onKeyTyped="#resetLabel" prefHeight="25.0" prefWidth="36.0" promptText="H" />
+      <TextField fx:id="endH" alignment="CENTER_RIGHT" layoutX="236.0" layoutY="126.0" onKeyTyped="#resetLabel" prefHeight="25.0" prefWidth="36.0" promptText="H" />
       <TextArea fx:id="notesTextArea" layoutX="90.0" layoutY="223.0" prefHeight="105.0" prefWidth="200.0" promptText="Notes" />
       <Label layoutX="122.0" layoutY="14.0" text="Add new activity">
          <font>
@@ -22,10 +20,6 @@
       </Label>
       <Label layoutX="121.0" layoutY="91.0" text="Start" />
       <Label layoutX="242.0" layoutY="91.0" text="End" />
-      <Label layoutX="104.0" layoutY="151.0" text="H" />
-      <Label layoutX="144.0" layoutY="151.0" text="Min" />
-      <Label layoutX="225.0" layoutY="151.0" prefHeight="17.0" prefWidth="9.0" text="H" />
-      <Label layoutX="263.0" layoutY="151.0" text="Min" />
       <Label fx:id="errorLabel" layoutX="147.0" layoutY="57.0" text="Wrong format!!" textFill="#ee0101" />
       <TextField fx:id="activityTextField" layoutX="90.0" layoutY="189.0" prefHeight="26.0" prefWidth="200.0" promptText="Activity" />
       <TextField fx:id="locationTextField" layoutX="92.0" layoutY="338.0" prefHeight="26.0" prefWidth="200.0" promptText="Location" />
