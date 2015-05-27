@@ -63,7 +63,7 @@ public class DayViewController extends MainWindowController implements Initializ
         cac = fxmlLoader.<ChangeActivityController>getController();
         cac.setUsername(getUsername());
         cac.setTheActiveDate(year, month, day);
-        System.out.println("username i dayvbiew: " + getUsername());
+        System.out.println("username in dayview: " + getUsername());
         //cac.setUsername(getUsername());
         cac.setLabels(selectedItem.substring(0, 2));
         Scene scene = new Scene(root);
